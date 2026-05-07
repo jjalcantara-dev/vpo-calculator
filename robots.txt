@@ -1,0 +1,24 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+
+# AI crawlers — welcome, this is public educational content
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: GoogleOther
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+Sitemap: https://vpo.jjalcantara.dev/sitemap.xml

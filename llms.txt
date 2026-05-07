@@ -1,0 +1,53 @@
+# Calculadora VPO · Galivivienda Fortalezas de Vélez
+
+> Calculadora interactiva para analizar el coste real de una VPO (Vivienda de Protección Oficial) en régimen cooperativo en Vélez-Málaga, Andalucía. Basada en documentación pública de la promoción Galivivienda Fortalezas de Vélez gestionada por EMVIPSA.
+
+## Qué hace esta herramienta
+
+Permite simular y calcular el coste total de participar en una VPO cooperativa:
+
+- Alquiler mensual ajustado con IPC (0%, 2% o 3%) durante 20-30 años
+- Precio de compra final con descuento sobre rentas acumuladas (50%–85%)
+- Coste total desembolsado (aportaciones + alquiler + comunidad/IBI + compra)
+- Comparativa de escenarios y análisis de riesgos jurídicos y económicos
+- Timeline de propiedad: 2029 (llaves) → 2049 (compra) → 2059 (libre de VPO)
+
+## Datos de la promoción
+
+- Promotor cooperativo: Galivivienda / CONCOVI (cooperativa sin ánimo de lucro)
+- Gestora pública: EMVIPSA (Empresa Municipal de Vivienda y Suelo de Vélez-Málaga)
+- Municipio: Vélez-Málaga (Málaga, Andalucía, España)
+- Parcelas: Valle-Niza, Real Bajo, Aceituneros, Cerro del Águila
+- Número de viviendas: 188
+- Ejemplo base: Ático A, Edificio 1 — 3 dormitorios, 81,70 m²
+- Valor adjudicación 2025: 196.760€
+- Alquiler base: 819,84€/mes
+- Aportaciones cooperativa: 39.000€ (25.000€ entrada + 14.000€ durante obra/llaves)
+- Las aportaciones son devolvibles al comprar y se descuentan del precio final
+- Plazo solicitudes: 12 mayo – 2 junio 2026
+
+## Cómo funciona la VPO cooperativa
+
+1. El socio paga 25.000€ al firmar el contrato de participación social
+2. Paga cuotas de 400€/mes durante la construcción + 9.000€ en entrega de llaves
+3. Recibe las llaves (~2029) y paga alquiler regulado durante mínimo 20 años
+4. En el año 20 (~2049) puede ejercer la opción de compra:
+   - Precio = valor adjudicación ajustado por IPC - descuento sobre rentas - 39.000€ aportaciones devueltas
+   - Descuento mínimo garantizado: 50% (cláusula 16ª contrato arrendamiento)
+   - Descuento anunciado en folleto: "aprox. 85%" (lo fija el Consejo Rector)
+5. La vivienda sigue siendo VPO hasta ~2059 (30 años desde calificación definitiva)
+
+## Marco legal aplicable
+
+- Decreto 149/2006 — Reglamento de Viviendas Protegidas de Andalucía
+- Decreto 91/2020 — Plan Vive en Andalucía 2020-2030
+- Ley 57/1968 — Garantías en aportaciones a cooperativas de vivienda
+- Calificación VPO: 30 años desde calificación definitiva (libertad total de venta en ~2059)
+- Durante la calificación: precio de venta regulado y derecho de tanteo de la Junta de Andalucía
+
+## Contacto y recursos
+
+- Calculadora: https://vpo.jjalcantara.dev
+- EMVIPSA (formularios y bases): https://emvipsa.es/procedimientos-de-adjucacion-de-viviendas-de-proteccion-oficial/
+- Galivivienda: info@galivivienda.com · 917 818 664 · www.galivivienda.com
+- Autor: Jesús Jiménez Alcántara — https://jjalcantara.dev
