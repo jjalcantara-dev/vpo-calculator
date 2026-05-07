@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Política de privacidad · Calculadora VPO · vpo.jjalcantara.dev</title>
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://vpo.jjalcantara.dev/privacy">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 367 278'%3E%3Cpath fill='%23111110' d='m64 34v18l17.3 0.2 17.2 0.3v78 78.1l-2.6 4.9c-5 9.8-15.5 14.8-26.4 12.5-10.5-2.2-18-10.7-19.4-22.2l-0.6-5.3h-17.5-17.5l0.3 6c0.9 16.2 6.2 28.4 17.2 39.6 18.4 18.7 45.6 23.3 69.7 11.7 9.1-4.4 21.5-16.7 26-25.8 7.1-14.3 6.7-7.9 7.1-116.3l0.3-97.7h-35.6-35.5zm27 0v9h-8.5-8.5v-9-9h8.5 8.5z'/%3E%3Cpath fill='%23111110' d='m143.9 16.4c-0.2 0.2-0.3 8.3-0.1 18l0.3 17.6h13.4 13.5l0.1 25.7c0 14.2 0.4 27.8 0.7 30.1l0.7 4.4 7.5-6.5c4.1-3.5 11.4-10.5 16.2-15.5l8.7-9 8.5 10.1c4.7 5.6 10.6 12.4 13 15.1l4.5 4.9 3-6.8c1.9-4.1 3.5-6.5 4-5.9 1.3 1.3 28.9 60.9 29.7 63.9l0.6 2.5h-25.6-25.6v17.5 17.5l34.6 0.2 34.6 0.3 14.1 30.7 14.2 30.8h19.3c10.5 0 19.2-0.4 19.2-0.8 0-0.7-21.1-46.1-40.5-87.2-4.8-10.2-18.1-38.5-29.5-63-31.4-67.1-44.4-94.3-45.3-94.4-0.5 0-7.3 13.3-15 29.7l-14.2 29.7-0.3-30-0.2-30h-31.8c-17.5 0-32.1 0.2-32.3 0.4z'/%3E%3Cpath fill='%23111110' d='m198.1 99.2c-2.1 4.6-10.3 21.8-18.1 38.3-24 50.7-29 61.3-29 61.9 0 0.3 4.6 0.7 10.3 0.8l10.2 0.3-0.3 4.4c-0.4 6.2-4.8 13.9-10 17.6-4.1 2.8-5 3-13.4 3.1h-9l-4.2 8.5c-2.4 4.6-6.2 11.5-8.5 15.3-4.8 7.7-4.8 7.6 3.4 10.2 7.9 2.5 21.9 3 30.9 1 22.2-5 39.2-21.3 45.3-43.7 1.6-5.8 1.8-12 1.8-65.9v-59.5l-2.7-0.3c-2.6-0.3-3 0.3-6.7 8z'/%3E%3Cpath fill='%23111110' d='m216 127.2c0 8 0.4 13.8 0.9 13.2 1.1-1.2 12.1-25.3 12.1-26.5 0-0.5-2.9-0.9-6.5-0.9h-6.5z'/%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fff; --bg2: #fafaf9; --bg3: #f4f3f1;
+    --border: rgba(0,0,0,0.09); --border2: rgba(0,0,0,0.2);
+    --text: #111110; --muted: #78716c;
+    --accent: #111110; --ok: #16a34a;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; font-weight: 400; line-height: 1.7; }
+  .header { padding: 32px 40px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+  .back-link { font-size: 12px; color: var(--muted); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--border2); border-radius: 4px; padding: 6px 12px; transition: all 0.15s; }
+  .back-link:hover { color: var(--text); border-color: var(--accent); }
+  .main { max-width: 720px; margin: 0 auto; padding: 48px 40px 80px; }
+  h1 { font-size: 28px; font-weight: 300; letter-spacing: -0.03em; margin-bottom: 6px; }
+  .subtitle { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); margin-bottom: 48px; }
+  h2 { font-size: 14px; font-weight: 600; color: var(--text); margin: 36px 0 10px; letter-spacing: -0.01em; }
+  p { font-size: 13px; color: var(--muted); margin-bottom: 10px; line-height: 1.75; }
+  a { color: var(--text); text-underline-offset: 3px; }
+  .service-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 16px 20px; margin: 10px 0; }
+  .service-name { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+  .service-desc { font-size: 12px; color: var(--muted); line-height: 1.65; }
+  .service-link { font-size: 11px; color: var(--muted); margin-top: 6px; }
+  .service-link a { color: var(--accent); }
+  table { width: 100%; border-collapse: collapse; font-size: 12px; margin: 10px 0; }
+  th { text-align: left; padding: 8px 12px; background: var(--bg3); color: var(--muted); font-weight: 500; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; border-bottom: 1px solid var(--border); }
+  td { padding: 9px 12px; border-bottom: 1px solid var(--border); color: var(--muted); vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  td:first-child { color: var(--text); font-weight: 500; white-space: nowrap; }
+  .footer { border-top: 1px solid var(--border); background: var(--bg2); padding: 20px 40px; font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+  @media (max-width: 700px) {
+    .header, .main, .footer { padding-left: 20px; padding-right: 20px; }
+    .main { padding-top: 32px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);">vpo.jjalcantara.dev / privacidad</div>
+  <a href="/" class="back-link">← Volver a la calculadora</a>
+</header>
+
+<main class="main">
+
+  <h1>Política de privacidad</h1>
+  <p class="subtitle">Última actualización: mayo 2025 · vpo.jjalcantara.dev</p>
+
+  <h2>Responsable</h2>
+  <p>Jesús Jiménez Alcántara — <a href="https://jjalcantara.dev">jjalcantara.dev</a><br>
+  Contacto: <span style="font-family:'DM Mono',monospace;font-size:12px;user-select:all;">contact@jjalcantara.dev</span></p>
+  <p>Esta herramienta se ofrece sin ánimo de lucro como análisis público de documentación disponible sobre la promoción Galivivienda Fortalezas de Vélez. No recoge, almacena ni trata datos personales identificables de sus visitantes.</p>
+  <p style="color:#b45309;">La información recogida en esta herramienta puede contener inexactitudes o estar desactualizada. Se irá corrigiendo y mejorando conforme se disponga de más datos contrastados. Si detectas algún error, escríbeme a <span style="font-family:'DM Mono',monospace;font-size:12px;user-select:all;">contact@jjalcantara.dev</span>.</p>
+
+  <h2>Datos que esta web NO recoge</h2>
+  <p>Esta web no tiene analíticas, no usa cookies de seguimiento, no muestra publicidad y no transmite ningún dato tuyo a terceros más allá de lo estrictamente necesario para servir la página. Tampoco guarda formularios, registros de usuario ni ningún tipo de perfil.</p>
+
+  <h2>Servicios de terceros</h2>
+  <p>Al cargar la página, el navegador establece conexiones con dos servicios externos que pueden procesar tu dirección IP:</p>
+
+  <div class="service-card">
+    <div class="service-name">Vercel Inc.</div>
+    <div class="service-desc">Proveedor de alojamiento web. Sirve los archivos estáticos de esta página desde sus servidores. Como cualquier proveedor de hosting, Vercel puede registrar metadatos de las peticiones HTTP (dirección IP, fecha, navegador, URL solicitada) con fines de seguridad y operativos.</div>
+    <div class="service-link">Política de privacidad: <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">vercel.com/legal/privacy-policy ↗</a></div>
+  </div>
+
+  <div class="service-card">
+    <div class="service-name">Google LLC — Google Fonts</div>
+    <div class="service-desc">Las tipografías (Inter, DM Mono) se cargan desde servidores de Google Fonts. Esta petición puede incluir tu dirección IP y datos técnicos del navegador. Google puede registrar estos datos conforme a su política de privacidad.</div>
+    <div class="service-link">Política de privacidad: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">policies.google.com/privacy ↗</a></div>
+  </div>
+
+  <h2>Almacenamiento local (localStorage)</h2>
+  <p>Esta web guarda en el almacenamiento local de tu navegador (<em>localStorage</em>) una única clave — <code style="font-family:'DM Mono',monospace;font-size:11px;background:var(--bg3);padding:2px 6px;border-radius:3px;">cookie-ok</code> — para recordar que has cerrado el aviso de privacidad. No es una cookie técnicamente, no tiene fecha de expiración del servidor y no se transmite a ningún servidor. Puedes borrarlo en cualquier momento desde los ajustes de tu navegador (DevTools → Application → Local Storage).</p>
+
+  <h2>Tus derechos (RGPD)</h2>
+  <p>En la medida en que esta web procese algún dato personal, tienes derecho a acceder, rectificar, suprimir, oponerte y solicitar la portabilidad de tus datos. Dado que no almacenamos datos identificables, el ejercicio práctico de estos derechos aplica principalmente a los servicios de terceros mencionados arriba, contactando directamente con Vercel o Google.</p>
+  <p>Para cualquier consulta sobre esta política escríbeme a <span style="font-family:'DM Mono',monospace;font-size:12px;user-select:all;">contact@jjalcantara.dev</span>. Tienes también derecho a presentar una reclamación ante la <a href="https://www.aepd.es" target="_blank" rel="noopener noreferrer">Agencia Española de Protección de Datos (aepd.es) ↗</a>.</p>
+
+  <h2>Resumen</h2>
+  <table>
+    <tr><th>Qué</th><th>Quién lo procesa</th><th>Por qué</th></tr>
+    <tr><td>Dirección IP + metadatos HTTP</td><td>Vercel</td><td>Servir la página web</td></tr>
+    <tr><td>Dirección IP + datos navegador</td><td>Google Fonts</td><td>Cargar tipografías</td></tr>
+    <tr><td>Clave localStorage <code style="font-family:'DM Mono',monospace;font-size:10px;">cookie-ok</code></td><td>Tu propio navegador</td><td>Recordar que cerraste el aviso</td></tr>
+    <tr><td>Cualquier otro dato personal</td><td>Nadie</td><td>No aplica — no se recoge</td></tr>
+  </table>
+
+</main>
+
+<footer class="footer">
+  <span>vpo.jjalcantara.dev · Calculadora VPO — Galivivienda Fortalezas de Vélez</span>
+  <span>No constituye asesoramiento financiero ni legal</span>
+</footer>
+
+</body>
+</html>

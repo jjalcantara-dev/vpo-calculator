@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora VPO Cooperativa · Galivivienda Fortalezas de Vélez · Vélez-Málaga</title>
+<meta name="description" content="Calcula el coste real de una VPO en régimen cooperativo en Vélez-Málaga. Analiza 20 años de alquiler, precio de compra final e IPC. Galivivienda Fortalezas de Vélez. Plazo solicitudes: 12 mayo – 2 junio.">
+<meta name="keywords" content="VPO Vélez-Málaga, Galivivienda Fortalezas de Vélez, vivienda protección oficial Andalucía, cooperativa vivienda, EMVIPSA, calculadora VPO">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Jesús Jiménez Alcántara">
+<link rel="canonical" href="https://vpo.jjalcantara.dev">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 367 278'%3E%3Cpath fill='%23111110' d='m64 34v18l17.3 0.2 17.2 0.3v78 78.1l-2.6 4.9c-5 9.8-15.5 14.8-26.4 12.5-10.5-2.2-18-10.7-19.4-22.2l-0.6-5.3h-17.5-17.5l0.3 6c0.9 16.2 6.2 28.4 17.2 39.6 18.4 18.7 45.6 23.3 69.7 11.7 9.1-4.4 21.5-16.7 26-25.8 7.1-14.3 6.7-7.9 7.1-116.3l0.3-97.7h-35.6-35.5zm27 0v9h-8.5-8.5v-9-9h8.5 8.5z'/%3E%3Cpath fill='%23111110' d='m143.9 16.4c-0.2 0.2-0.3 8.3-0.1 18l0.3 17.6h13.4 13.5l0.1 25.7c0 14.2 0.4 27.8 0.7 30.1l0.7 4.4 7.5-6.5c4.1-3.5 11.4-10.5 16.2-15.5l8.7-9 8.5 10.1c4.7 5.6 10.6 12.4 13 15.1l4.5 4.9 3-6.8c1.9-4.1 3.5-6.5 4-5.9 1.3 1.3 28.9 60.9 29.7 63.9l0.6 2.5h-25.6-25.6v17.5 17.5l34.6 0.2 34.6 0.3 14.1 30.7 14.2 30.8h19.3c10.5 0 19.2-0.4 19.2-0.8 0-0.7-21.1-46.1-40.5-87.2-4.8-10.2-18.1-38.5-29.5-63-31.4-67.1-44.4-94.3-45.3-94.4-0.5 0-7.3 13.3-15 29.7l-14.2 29.7-0.3-30-0.2-30h-31.8c-17.5 0-32.1 0.2-32.3 0.4z'/%3E%3Cpath fill='%23111110' d='m198.1 99.2c-2.1 4.6-10.3 21.8-18.1 38.3-24 50.7-29 61.3-29 61.9 0 0.3 4.6 0.7 10.3 0.8l10.2 0.3-0.3 4.4c-0.4 6.2-4.8 13.9-10 17.6-4.1 2.8-5 3-13.4 3.1h-9l-4.2 8.5c-2.4 4.6-6.2 11.5-8.5 15.3-4.8 7.7-4.8 7.6 3.4 10.2 7.9 2.5 21.9 3 30.9 1 22.2-5 39.2-21.3 45.3-43.7 1.6-5.8 1.8-12 1.8-65.9v-59.5l-2.7-0.3c-2.6-0.3-3 0.3-6.7 8z'/%3E%3Cpath fill='%23111110' d='m216 127.2c0 8 0.4 13.8 0.9 13.2 1.1-1.2 12.1-25.3 12.1-26.5 0-0.5-2.9-0.9-6.5-0.9h-6.5z'/%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vpo.jjalcantara.dev">
+<meta property="og:title" content="Calculadora VPO · Galivivienda Fortalezas de Vélez">
+<meta property="og:description" content="Analiza el coste real de una VPO cooperativa en Vélez-Málaga: 20 años de alquiler y opción de compra. Plazo solicitudes: 12 mayo – 2 junio.">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="vpo.jjalcantara.dev">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Calculadora VPO · Galivivienda Fortalezas de Vélez">
+<meta name="twitter:description" content="Analiza el coste real de una VPO cooperativa en Vélez-Málaga. Plazo solicitudes: 12 mayo – 2 junio.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fff; --bg2: #fafaf9; --bg3: #f4f3f1;
+    --border: rgba(0,0,0,0.09); --border2: rgba(0,0,0,0.2);
+    --text: #111110; --muted: #78716c;
+    --accent: #111110; --accent2: #16a34a;
+    --danger: #dc2626; --warn: #b45309; --ok: #16a34a; --info: #2563eb;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; font-weight: 400; line-height: 1.6; }
+  .hero { padding: 56px 40px 44px; border-bottom: 1px solid var(--border); }
+  .hero-label { font-size: 11px; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 16px; font-weight: 500; }
+  h1 { font-size: clamp(28px, 4vw, 48px); font-weight: 300; color: var(--text); line-height: 1.1; margin-bottom: 10px; letter-spacing: -0.03em; }
+  h1 em { color: var(--muted); font-style: italic; }
+  .hero-sub { color: var(--muted); font-size: 14px; margin-bottom: 24px; }
+  .hero-badges { display: flex; gap: 8px; flex-wrap: wrap; }
+  .badge { display: inline-flex; align-items: center; gap: 6px; border-radius: 4px; padding: 5px 10px; font-size: 11px; font-weight: 500; }
+  .badge-deadline { background: #fef2f2; border: 1px solid rgba(220,38,38,0.25); color: var(--danger); }
+  .badge-ok { background: #f0fdf4; border: 1px solid rgba(22,163,74,0.22); color: var(--ok); }
+  .badge-warn { background: #fffbeb; border: 1px solid rgba(180,83,9,0.22); color: var(--warn); }
+  .controls-bar { background: rgba(255,255,255,0.95); border-bottom: 1px solid var(--border); padding: 14px 40px; display: flex; gap: 24px; flex-wrap: wrap; align-items: center; position: sticky; top: 0; z-index: 100; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: 0 1px 0 var(--border), 0 4px 16px rgba(0,0,0,0.04); }
+  .ctrl-group { display: flex; flex-direction: column; gap: 5px; }
+  .ctrl-label { font-size: 10px; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500; }
+  .ctrl-row { display: flex; gap: 4px; }
+  .btn-opt { background: transparent; border: 1px solid var(--border2); color: var(--muted); padding: 5px 11px; border-radius: 4px; font-family: 'DM Mono', monospace; font-size: 11px; cursor: pointer; transition: all 0.15s; }
+  .btn-opt:hover { border-color: var(--accent); color: var(--text); }
+  .btn-opt.active { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 500; }
+  .main { padding: 36px 40px; max-width: 1100px; margin: 0 auto; }
+  .section { margin-bottom: 48px; }
+  .section-header { display: flex; align-items: baseline; gap: 12px; margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+  .section-title { font-size: 16px; font-weight: 600; color: var(--text); letter-spacing: -0.01em; }
+  .section-note { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); }
+  .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(165px, 1fr)); gap: 10px; }
+  .kpi { background: var(--bg); border: 1px solid var(--border); border-top: 2px solid var(--border); border-radius: 6px; padding: 18px; transition: border-top-color 0.2s, transform 0.15s, box-shadow 0.15s; }
+  .kpi:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+  .kpi:has(.kpi-value.accent) { border-top-color: rgba(17,17,16,0.4); }
+  .kpi:has(.kpi-value.ok) { border-top-color: rgba(22,163,74,0.5); }
+  .kpi:has(.kpi-value.danger) { border-top-color: rgba(220,38,38,0.5); }
+  .kpi:has(.kpi-value.warn) { border-top-color: rgba(180,83,9,0.5); }
+  .kpi-label { font-size: 10px; color: var(--muted); margin-bottom: 7px; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 500; }
+  .kpi-value { font-family: 'DM Mono', monospace; font-size: 22px; color: var(--text); letter-spacing: -0.02em; }
+  .kpi-value.accent { color: var(--text); }
+  .kpi-value.ok { color: var(--ok); }
+  .kpi-value.danger { color: var(--danger); }
+  .kpi-value.warn { color: var(--warn); }
+  .kpi-sub { font-size: 11px; color: var(--muted); margin-top: 4px; }
+  .kpi-confirmed { font-size: 10px; color: var(--ok); margin-top: 4px; font-family: 'DM Mono', monospace; font-weight: 500; }
+  .table-wrap { overflow-x: auto; border-radius: 6px; border: 1px solid var(--border); }
+  table { width: 100%; border-collapse: collapse; }
+  thead th { background: var(--bg3); padding: 10px 15px; text-align: left; font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; border-bottom: 1px solid var(--border); font-weight: 500; }
+  tbody td { padding: 11px 15px; font-size: 13px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:hover td { background: rgba(0,0,0,0.02); }
+  tbody tr.total td { background: var(--bg3); font-weight: 600; border-top: 1px solid var(--border2); }
+  tbody tr.subtotal td { background: var(--bg2); }
+  .mono { font-family: 'DM Mono', monospace; font-size: 12px; }
+  .tag { display: inline-block; font-size: 10px; padding: 2px 7px; border-radius: 3px; font-weight: 500; }
+  .tag-ok { background: #dcfce7; color: var(--ok); }
+  .tag-warn { background: #fef9c3; color: var(--warn); }
+  .tag-danger { background: #fee2e2; color: var(--danger); }
+  .tag-info { background: #dbeafe; color: var(--info); }
+  .risk-grid { display: grid; gap: 6px; }
+  .risk-row { display: grid; grid-template-columns: 2fr 80px 2fr; gap: 14px; background: var(--bg); border: 1px solid var(--border); border-radius: 6px; padding: 14px; align-items: start; transition: border-color 0.15s; }
+  .risk-row:hover { border-color: var(--border2); }
+  .risk-title { font-weight: 500; color: var(--text); margin-bottom: 3px; font-size: 13px; }
+  .risk-desc { font-size: 12px; color: var(--muted); line-height: 1.55; }
+  .risk-action { font-size: 12px; color: var(--ok); line-height: 1.55; }
+  .confirmed-box { background: #f0fdf4; border: 1px solid rgba(22,163,74,0.2); border-radius: 6px; padding: 16px 20px; margin-bottom: 20px; }
+  .confirmed-title { font-size: 10px; color: var(--ok); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; font-weight: 600; }
+  .confirmed-items { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 6px; }
+  .confirmed-item { font-size: 12px; color: var(--text); display: flex; gap: 8px; align-items: flex-start; }
+  .confirmed-item::before { content: '✓'; color: var(--ok); flex-shrink: 0; font-weight: 600; }
+  .summary-box { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  .sum-col h3 { font-size: 15px; font-weight: 600; margin-bottom: 12px; letter-spacing: -0.01em; }
+  .sum-col h3.green { color: var(--ok); }
+  .sum-col h3.red { color: var(--danger); }
+  .sum-list { list-style: none; }
+  .sum-list li { font-size: 12px; color: var(--muted); padding: 5px 0; border-bottom: 1px solid var(--border); display: flex; gap: 7px; align-items: flex-start; }
+  .sum-list li:last-child { border-bottom: none; }
+  .sum-list li::before { content: '→'; color: var(--muted); flex-shrink: 0; font-size: 11px; margin-top: 2px; }
+  .footer-note { background: var(--bg2); border: 1px solid var(--border); border-radius: 6px; padding: 14px 18px; font-size: 12px; color: var(--muted); margin-top: 14px; }
+  .footer-note strong { color: var(--text); font-weight: 500; }
+  .portfolio-link { text-decoration: none; display: inline-flex; align-items: center; gap: 8px; font-size: 11px; color: var(--muted); border: 1px solid var(--border2); border-radius: 4px; padding: 6px 12px; transition: all 0.15s; flex-shrink: 0; font-weight: 500; }
+  .portfolio-link:hover { color: var(--text); border-color: var(--accent); transform: translateY(-1px); }
+  .logo-svg { display: block; transition: opacity 0.2s; }
+  .portfolio-link .logo-svg { opacity: 0.45; }
+  .portfolio-link:hover .logo-svg { opacity: 1; }
+  .site-footer { border-top: 1px solid var(--border); background: var(--bg2); padding: 28px 40px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+  .site-footer-logo { display: inline-flex; align-items: center; gap: 14px; text-decoration: none; }
+  .site-footer-logo .logo-svg { opacity: 0.4; }
+  .site-footer-logo:hover .logo-svg { opacity: 0.9; }
+  input[type="text"], input[type="number"] { background: var(--bg); border: 1px solid var(--border2); color: var(--text); padding: 5px 10px; border-radius: 4px; font-family: 'DM Mono', monospace; font-size: 12px; outline: none; transition: border-color 0.15s; }
+  input[type="text"]:focus, input[type="number"]:focus { border-color: var(--accent); }
+  input[type="number"] { -moz-appearance: textfield; }
+  input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; }
+  @media (max-width: 700px) {
+    .hero, .main { padding: 24px 16px; }
+    .controls-bar { padding: 14px 16px; position: static; box-shadow: none; border-bottom: 1px solid var(--border); gap: 14px; }
+    .ctrl-group { flex: 1 1 140px; }
+    .site-footer { padding: 20px 16px; flex-direction: column; align-items: flex-start; }
+    .risk-row { grid-template-columns: 1fr; }
+    .summary-box { grid-template-columns: 1fr; }
+    table { min-width: 560px; }
+    .kpi-value { font-size: 18px; }
+    h1 { font-size: clamp(24px, 6vw, 36px); }
+    .riesgos-2049-grid { grid-template-columns: 1fr !important; }
+    .riesgos-2049-money { grid-template-columns: 1fr !important; }
+  }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Calculadora VPO — Galivivienda Fortalezas de Vélez",
+  "description": "Calculadora interactiva para analizar el coste real de una VPO en régimen cooperativo. 188 viviendas en Vélez-Málaga.",
+  "url": "https://vpo.jjalcantara.dev",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Web",
+  "inLanguage": "es-ES",
+  "author": { "@type": "Person", "name": "Jesús Jiménez Alcántara", "url": "https://jjalcantara.dev" },
+  "about": { "@type": "Place", "name": "Galivivienda Fortalezas de Vélez", "address": { "@type": "PostalAddress", "addressLocality": "Vélez-Málaga", "addressRegion": "Málaga", "addressCountry": "ES" } }
+}
+</script>
+</head>
+<body>
+
+<header class="hero">
+  <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:14px;">
+    <div class="hero-label" style="margin-bottom:0;">Análisis económico · Vivienda Protegida Oficial · Andalucía</div>
+    <a href="https://jjalcantara.dev" class="portfolio-link" target="_blank" rel="noopener noreferrer"><svg class="logo-svg" fill="currentColor" style="height:15px;width:auto;" viewBox="0 0 367 278" xmlns="http://www.w3.org/2000/svg"><path d="m64 34v18l17.3 0.2 17.2 0.3v78 78.1l-2.6 4.9c-5 9.8-15.5 14.8-26.4 12.5-10.5-2.2-18-10.7-19.4-22.2l-0.6-5.3h-17.5-17.5l0.3 6c0.9 16.2 6.2 28.4 17.2 39.6 18.4 18.7 45.6 23.3 69.7 11.7 9.1-4.4 21.5-16.7 26-25.8 7.1-14.3 6.7-7.9 7.1-116.3l0.3-97.7h-35.6-35.5zm27 0v9h-8.5-8.5v-9-9h8.5 8.5z"/><path d="m143.9 16.4c-0.2 0.2-0.3 8.3-0.1 18l0.3 17.6h13.4 13.5l0.1 25.7c0 14.2 0.4 27.8 0.7 30.1l0.7 4.4 7.5-6.5c4.1-3.5 11.4-10.5 16.2-15.5l8.7-9 8.5 10.1c4.7 5.6 10.6 12.4 13 15.1l4.5 4.9 3-6.8c1.9-4.1 3.5-6.5 4-5.9 1.3 1.3 28.9 60.9 29.7 63.9l0.6 2.5h-25.6-25.6v17.5 17.5l34.6 0.2 34.6 0.3 14.1 30.7 14.2 30.8h19.3c10.5 0 19.2-0.4 19.2-0.8 0-0.7-21.1-46.1-40.5-87.2-4.8-10.2-18.1-38.5-29.5-63-31.4-67.1-44.4-94.3-45.3-94.4-0.5 0-7.3 13.3-15 29.7l-14.2 29.7-0.3-30-0.2-30h-31.8c-17.5 0-32.1 0.2-32.3 0.4z"/><path d="m198.1 99.2c-2.1 4.6-10.3 21.8-18.1 38.3-24 50.7-29 61.3-29 61.9 0 0.3 4.6 0.7 10.3 0.8l10.2 0.3-0.3 4.4c-0.4 6.2-4.8 13.9-10 17.6-4.1 2.8-5 3-13.4 3.1h-9l-4.2 8.5c-2.4 4.6-6.2 11.5-8.5 15.3-4.8 7.7-4.8 7.6 3.4 10.2 7.9 2.5 21.9 3 30.9 1 22.2-5 39.2-21.3 45.3-43.7 1.6-5.8 1.8-12 1.8-65.9v-59.5l-2.7-0.3c-2.6-0.3-3 0.3-6.7 8z"/><path d="m216 127.2c0 8 0.4 13.8 0.9 13.2 1.1-1.2 12.1-25.3 12.1-26.5 0-0.5-2.9-0.9-6.5-0.9h-6.5z"/></svg> jjalcantara.dev <span>↗</span></a>
+  </div>
+  <h1>Galivivienda <em>Fortalezas de Vélez</em></h1>
+  <p class="hero-sub">Calculadora para analizar el coste real de una VPO cooperativa · 188 viviendas en Vélez-Málaga</p>
+  <div style="margin-top:18px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
+    <a href="https://emvipsa.es/procedimientos-de-adjucacion-de-viviendas-de-proteccion-oficial/" target="_blank" rel="noopener noreferrer" style="font-size:12px;color:var(--danger);text-decoration:none;font-weight:500;">⏳ Plazo solicitudes: 12 mayo – 2 junio · emvipsa.es ↗</a>
+    <span style="font-size:12px;color:var(--muted);">Valle-Niza · Real Bajo · Aceituneros · Cerro del Águila</span>
+  </div>
+</header>
+
+<main>
+<div class="controls-bar">
+  <div class="ctrl-group">
+    <span class="ctrl-label">Valor piso 2025 (€)</span>
+    <div class="ctrl-row">
+      <input id="inp-adj" type="text" value="196.760" style="width:120px;" oninput="fmtInput(this)" onblur="fmtInput(this)">
+    </div>
+  </div>
+  <div class="ctrl-group">
+    <span class="ctrl-label">Alquiler mensual base (€) <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--muted);font-size:9px;">— introduce el precio ya descontado</span></span>
+    <div class="ctrl-row">
+      <input id="inp-rent" type="number" value="819.84" step="10" min="0" style="width:100px;" oninput="if(this.value<0)this.value=0; render()">
+    </div>
+  </div>
+  <div class="ctrl-group">
+    <span class="ctrl-label">IPC anual estimado</span>
+    <div class="ctrl-row">
+      <button class="btn-opt" onclick="setParam('ipc',0,this)">0%</button>
+      <button class="btn-opt active" onclick="setParam('ipc',2,this)">2%</button>
+      <button class="btn-opt" onclick="setParam('ipc',3,this)">3%</button>
+    </div>
+  </div>
+  <div class="ctrl-group">
+    <span class="ctrl-label">Alquiler sube con IPC</span>
+    <div class="ctrl-row">
+      <button class="btn-opt active" onclick="setParam('rentIpc',true,this)">Sí</button>
+      <button class="btn-opt" onclick="setParam('rentIpc',false,this)">No (fijo)</button>
+    </div>
+  </div>
+  <div class="ctrl-group">
+    <span class="ctrl-label">Años en alquiler antes de comprar</span>
+    <div class="ctrl-row">
+      <button class="btn-opt active" onclick="setParam('years',20,this)">20 <span style="font-size:9px;opacity:0.6">(mín)</span></button>
+      <button class="btn-opt" onclick="setParam('years',25,this)">25</button>
+      <button class="btn-opt" onclick="setParam('years',30,this)">30</button>
+      <button class="btn-opt" onclick="setParam('years',0,this)">Solo alquiler</button>
+    </div>
+  </div>
+  <div class="ctrl-group">
+    <span class="ctrl-label">Descuento en la compra (sobre rentas)</span>
+    <div class="ctrl-row">
+      <button class="btn-opt" onclick="setParam('pct',85,this)">85%</button>
+      <button class="btn-opt" onclick="setParam('pct',75,this)">75%</button>
+      <button class="btn-opt" onclick="setParam('pct',65,this)">65%</button>
+      <button class="btn-opt active" onclick="setParam('pct',50,this)">50% <span style="font-size:9px;opacity:0.6">(mín)</span></button>
+    </div>
+  </div>
+  <div class="ctrl-group">
+    <span class="ctrl-label">Comunidad + IBI mensual</span>
+    <div class="ctrl-row">
+      <button class="btn-opt active" onclick="setParam('com',0,this)">Sin estimar</button>
+      <button class="btn-opt" onclick="setParam('com',90,this)">90 €/mes</button>
+      <button class="btn-opt" onclick="setParam('com',130,this)">130 €/mes</button>
+    </div>
+  </div>
+</div>
+
+<div style="background:var(--bg2);border-bottom:1px solid var(--border);padding:16px 40px;">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;">
+      <div class="kpi" style="padding:14px;">
+        <div class="kpi-label">Coste mensual total real</div>
+        <div class="kpi-value warn" id="kpi-monthly" style="font-size:20px;">—</div>
+        <div class="kpi-sub" id="kpi-monthly-sub">Alquiler + comunidad + IBI</div>
+      </div>
+      <div class="kpi" style="padding:14px;">
+        <div class="kpi-label" id="kpi-buy-label">Precio compra año 20</div>
+        <div class="kpi-value ok" id="kpi-buy" style="font-size:20px;">—</div>
+        <div class="kpi-sub" id="kpi-buy-sub">Tras descuento rentas y 39k</div>
+        <div class="kpi-confirmed">✓ 39k se devuelven al comprar</div>
+      </div>
+      <div class="kpi" style="padding:14px;">
+        <div class="kpi-label">Total desembolsado</div>
+        <div class="kpi-value danger" id="kpi-total" style="font-size:20px;">—</div>
+        <div class="kpi-sub">Aportaciones + alquiler + comunidad/IBI + compra</div>
+      </div>
+      <div class="kpi" style="padding:14px;">
+        <div class="kpi-label" id="kpi-adj-label">Valor piso año 20</div>
+        <div class="kpi-value" id="kpi-adj" style="font-size:20px;">—</div>
+        <div class="kpi-sub" id="kpi-adj-sub">Valor adjudicación con IPC</div>
+      </div>
+    </div>
+    <div style="margin-top:10px;background:var(--bg3);border-radius:6px;padding:10px 14px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;">
+      <span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);flex-shrink:0;" id="kpi-label">Escenario base</span>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;margin-left:auto;">
+        <span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);">Alquiler: <strong id="brk-rent" style="color:var(--text);">—</strong></span>
+        <span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);">IBI: <strong id="brk-ibi" style="color:var(--text);">—</strong></span>
+        <span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);" id="brk-com-wrap">Comunidad: <strong id="brk-com" style="color:var(--text);">—</strong></span>
+        <span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);">Aportaciones: <strong style="color:var(--text);">39.000€</strong> <span style="color:var(--ok);">(se recuperan)</span></span>
+        <span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);" id="brk-buy-wrap">Precio compra: <strong id="brk-buy" style="color:var(--text);">—</strong> · Notaría/ITP (~5%): <strong id="brk-notary" style="color:var(--text);">—</strong></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- Confirmados por contrato -->
+  <div class="confirmed-box">
+    <div class="confirmed-title">✓ Confirmado por contrato real — ya no son estimaciones</div>
+    <div class="confirmed-items">
+      <div class="confirmed-item">Cada vivienda incluye plaza de garaje en sótano y trastero vinculados — inseparables de la adjudicación</div>
+      <div class="confirmed-item">Las aportaciones de 39.000 € (25k entrada + 14k en obra/llaves) se devuelven al comprar y se descuentan del precio final</div>
+      <div class="confirmed-item">Descuento mínimo garantizado: 50% sobre rentas pagadas (contrato arrendamiento, cláusula 16ª)</div>
+      <div class="confirmed-item">Cocina equipada: vitrocerámica, horno, campana, frigorífico, lavadora y lavavajillas (inventario contrato)</div>
+      <div class="confirmed-item">Comunidad + IBI los pagas tú encima del alquiler (cláusula 5ª) — solo está confirmada la obligación, los importes exactos se fijan cuando se constituya la comunidad de propietarios</div>
+      <div class="confirmed-item">Si renuncias después de firmar y no hay sustituto: pierdes los 25.000 € de entrada (cláusula penal)</div>
+      <div class="confirmed-item">Puedes ceder tu posición a otro socio de la cooperativa — consulta estatutos para condiciones exactas</div>
+      <div class="confirmed-item">Los causahabientes (herederos legales) pueden ejercer la opción de compra, siempre que cumplan los requisitos VPO vigentes en ese momento</div>
+    </div>
+  </div>
+
+  <!-- Tabla de pagos -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-title">Tabla de pagos detallada</span>
+      <span class="section-note">Todos los importes en euros</span>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Concepto</th>
+            <th>Cuándo</th>
+            <th style="text-align:right">Importe</th>
+            <th>Estado</th>
+            <th>Fuente</th>
+          </tr>
+        </thead>
+        <tbody id="payments-tbody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Riesgos -->
+  <div class="section" id="riesgos">
+    <div class="section-header">
+      <span class="section-title">Riesgos e incertidumbres</span>
+      <span class="section-note">Actualizados con datos del contrato real</span>
+    </div>
+    <div class="risk-grid">
+      <div class="risk-row">
+        <div>
+          <div class="risk-title">Porcentaje exacto de descuento sobre rentas <span class="tag tag-danger">CRÍTICO</span></div>
+          <div class="risk-desc">El contrato garantiza mínimo 50% pero no fija el definitivo. El folleto dice "aprox. 85%". Lo decide el Consejo Rector al año 20 según costes del préstamo promotor pendiente. La diferencia económica entre ambos extremos varía según la vivienda elegida — a mayor valor de adjudicación y mayor alquiler mensual, mayor es el impacto: usa la calculadora para ver el rango exacto con los valores del piso que te interese.</div>
+        </div>
+        <div><span class="tag tag-danger">Alto</span></div>
+        <div class="risk-action">No puedes forzarlo hoy. Planifica con el 50% para no llevarte sorpresas. Si aplican más, mejor.</div>
+      </div>
+      <div class="risk-row">
+        <div>
+          <div class="risk-title">Comunidad mensual sin cuantificar <span class="tag tag-warn">Pendiente</span></div>
+          <div class="risk-desc">El contrato confirma que la pagas tú encima del alquiler. Con piscina salina, solarium, coworking, ascensor 7 plantas y urbanización cerrada, estima entre 80-130 €/mes. En 20 años son 19.200-31.200 € adicionales.</div>
+        </div>
+        <div><span class="tag tag-warn">Medio</span></div>
+        <div class="risk-action">Pregunta a Galivivienda la estimación de comunidad antes de firmar. Usa el selector de arriba para ver el impacto.</div>
+      </div>
+      <div class="risk-row">
+        <div>
+          <div class="risk-title">IBI anual <span class="tag tag-ok">Menor</span></div>
+          <div class="risk-desc">El contrato confirma que lo pagas tú. En VPO régimen general en Valle-Niza/Vélez-Málaga, el IBI ronda 150-200 €/año (~15 €/mes). Las VPO tienen bonificación del 50% en muchos municipios andaluces.</div>
+        </div>
+        <div><span class="tag tag-ok">Bajo</span></div>
+        <div class="risk-action">Confirma con <a href="https://emvipsa.es/procedimientos-de-adjucacion-de-viviendas-de-proteccion-oficial/" target="_blank" rel="noopener noreferrer" style="color:var(--accent2);text-decoration:underline;text-underline-offset:3px;">EMVIPSA ↗</a> o ayuntamiento si existe bonificación VPO en Vélez-Málaga. Puede reducirlo a ~75-100 €/año.</div>
+      </div>
+      <div class="risk-row">
+        <div>
+          <div class="risk-title">Penalización por renuncia tras firmar <span class="tag tag-danger">Irreversible</span></div>
+          <div class="risk-desc">Si firmas el contrato de participación y luego renuncias sin que otro socio te sustituya, pierdes los 25.000 € desembolsados. Es cláusula penal explícita. No hay marcha atrás salvo sustitución.</div>
+        </div>
+        <div><span class="tag tag-danger">Alto</span></div>
+        <div class="risk-action">Lee los estatutos completos antes de firmar. No firmes con dudas. La sustitución por otro socio es posible pero requiere gestión.</div>
+      </div>
+      <div class="risk-row">
+        <div>
+          <div class="risk-title">Préstamo promotor pendiente al año 20</div>
+          <div class="risk-desc">El porcentaje de descuento lo calcula el Consejo Rector "en función de los costes del préstamo promotor pendiente de amortizar". Si queda deuda considerable en el año 20, el descuento se acerca más al 50% que al 85%.</div>
+        </div>
+        <div><span class="tag tag-warn">Medio</span></div>
+        <div class="risk-action">Pregunta cuál es el plazo previsto de amortización del préstamo promotor. Si está previsto amortizarlo en 20 años, el descuento debería ser más generoso.</div>
+      </div>
+      <div class="risk-row">
+        <div>
+          <div class="risk-title">Suficiencia económica (paro actual)</div>
+          <div class="risk-desc">El Decreto 149/2006 de la Junta de Andalucía exige que el alquiler no supere el 30% de los ingresos netos del solicitante. Con el paro (~1.200 €/mes), el 30% son ~360 €. El alquiler base es 819 €. La verificación es en la adjudicación definitiva, no en el sorteo.</div>
+        </div>
+        <div><span class="tag tag-warn">Temporal</span></div>
+        <div class="risk-action">Participa en el sorteo sin problema. Si cuando llegue la verificación estás trabajando, desaparece el riesgo. El proceso tardará meses.</div>
+      </div>
+      <div class="risk-row">
+        <div>
+          <div class="risk-title">Venta antes de 20-30 años</div>
+          <div class="risk-desc">No puedes vender a precio libre durante la calificación VPO (30 años desde calificación definitiva). La Junta tiene derecho de tanteo. Descalificación anticipada a los 15 años posible devolviendo ayudas con intereses.</div>
+        </div>
+        <div><span class="tag tag-warn">Medio</span></div>
+        <div class="risk-action">Operación adecuada solo si planeas quedarte en Vélez-Málaga a largo plazo. No es un activo líquido a corto plazo.</div>
+      </div>
+      <div class="risk-row">
+        <div>
+          <div class="risk-title">Gastos compraventa año 20 <span class="tag tag-ok">Menor</span></div>
+          <div class="risk-desc">Notaría, registro e impuestos: aprox. 3-8% del precio de compra neto. El contrato confirma que van a cargo del comprador (tú).</div>
+        </div>
+        <div><span class="tag tag-warn">Bajo</span></div>
+        <div class="risk-action">Añade ~5% del precio final neto a tu planificación de liquidez en el año 20.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Timeline de propiedad -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-title">¿Cuándo es el piso 100% tuyo y libre?</span>
+      <span class="section-note">Estimando llaves en 2029 · calificación definitiva ~2029</span>
+    </div>
+    <div style="display:grid;gap:10px;">
+
+      <div style="display:grid;grid-template-columns:140px 1fr;border-radius:12px;overflow:hidden;border:1px solid var(--border);">
+        <div style="background:rgba(212,170,90,0.12);padding:16px 18px;display:flex;flex-direction:column;justify-content:center;border-right:1px solid var(--border);">
+          <div style="font-family:DM Mono,monospace;font-size:11px;color:var(--warn);">~2029</div>
+          <div style="font-family:'Inter',sans-serif;font-size:16px;font-weight:300;color:var(--text);">Llaves</div>
+        </div>
+        <div style="background:var(--bg2);padding:14px 18px;">
+          <div style="font-size:13px;font-weight:500;color:var(--text);margin-bottom:4px;">Entras a vivir — empieza el alquiler</div>
+          <div style="font-size:12px;color:var(--muted);">Pagas alquiler + comunidad + IBI. El piso es de la cooperativa. No puedes vender ni subarrendar. Puedes ceder tu posición a otro socio.</div>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:140px 1fr;border-radius:12px;overflow:hidden;border:1px solid var(--border);">
+        <div style="background:rgba(106,158,194,0.12);padding:16px 18px;display:flex;flex-direction:column;justify-content:center;border-right:1px solid var(--border);">
+          <div style="font-family:DM Mono,monospace;font-size:11px;color:var(--info);">~2044</div>
+          <div style="font-family:'Inter',sans-serif;font-size:16px;font-weight:300;color:var(--text);">Año 15</div>
+        </div>
+        <div style="background:var(--bg2);padding:14px 18px;">
+          <div style="font-size:13px;font-weight:500;color:var(--text);margin-bottom:4px;">Descalificación anticipada posible (opcional)</div>
+          <div style="font-size:12px;color:var(--muted);">Puedes pedir descalificar la VPO antes de los 30 años devolviendo las ayudas públicas recibidas con intereses. No es gratuito.</div>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:140px 1fr;border-radius:12px;overflow:hidden;border:1px solid rgba(126,184,154,0.3);">
+        <div style="background:rgba(126,184,154,0.12);padding:16px 18px;display:flex;flex-direction:column;justify-content:center;border-right:1px solid rgba(126,184,154,0.2);">
+          <div style="font-family:DM Mono,monospace;font-size:11px;color:var(--ok);">~2049</div>
+          <div style="font-family:'Inter',sans-serif;font-size:16px;font-weight:300;color:var(--text);">Año 20</div>
+        </div>
+        <div style="background:var(--bg2);padding:14px 18px;">
+          <div style="font-size:13px;font-weight:500;color:var(--text);margin-bottom:4px;">Puedes ejercer la opción de compra</div>
+          <div style="font-size:12px;color:var(--muted);">El piso pasa a ser tuyo legalmente. Pagas el precio neto (valor adjudicación menos descuento rentas menos 39k). PERO sigue siendo VPO hasta 2059. No puedes alquilarlo libremente ni vender a precio de mercado. La Junta tiene derecho de tanteo sobre cualquier venta.</div>
+        </div>
+      </div>
+
+      <!-- Bloque riesgos 2049 -->
+      <div style="border:1px solid rgba(180,83,9,0.3);border-radius:10px;background:rgba(180,83,9,0.04);padding:16px 20px;">
+        <div style="font-size:12px;font-weight:600;color:var(--warn);margin-bottom:10px;letter-spacing:0.03em;">POSIBLES PROBLEMAS EN ~2049 AL EJERCER LA OPCIÓN</div>
+        <div style="display:grid;gap:8px;">
+
+          <div class="riesgos-2049-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+            <div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:12px 14px;">
+              <div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:4px;">Ganas demasiado en 2049</div>
+              <div style="font-size:11px;color:var(--muted);line-height:1.5;">Si superas el límite de ingresos VPO vigente en ese momento, no puedes comprar al precio protegido. <strong style="color:var(--text);">Pierdes la opción de compra</strong> — no el alquiler pagado (era tu vivienda) ni las aportaciones cooperativas (te las devuelven). Lo que pierdes es el descuento sobre el precio de mercado, que en 2049 podría ser 100.000–200.000€ de diferencia.</div>
+              <div style="font-size:10px;color:var(--warn);margin-top:6px;">Nota: durante los 20 años de alquiler NO te comprueban los ingresos. Solo en 2026 y en 2049.</div>
+            </div>
+            <div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:12px 14px;">
+              <div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:4px;">Tienes otro piso en 2049</div>
+              <div style="font-size:11px;color:var(--muted);line-height:1.5;">Ser titular de otra vivienda puede bloquearte la compra VPO. La norma general exige no poseer otra vivienda en España. Excepción posible si demuestras que no satisface tus necesidades actuales. VPO en propiedad → descalificación directa. Vivienda libre → valoración caso por caso por la Junta.</div>
+              <div style="font-size:10px;color:var(--warn);margin-top:6px;">La legislación habrá cambiado varias veces en 23 años — imposible saber hoy qué norma aplicará.</div>
+            </div>
+          </div>
+
+          <div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:12px 14px;">
+            <div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:4px;">Si no puedes comprar — ¿qué pasa con tu dinero?</div>
+            <div class="riesgos-2049-money" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:8px;">
+              <div>
+                <div style="font-size:11px;font-weight:600;color:var(--ok);">Recuperas</div>
+                <div style="font-size:11px;color:var(--muted);">Los 39.000€ en aportaciones cooperativas — son tu participación en el capital social y deben devolverse</div>
+              </div>
+              <div>
+                <div style="font-size:11px;font-weight:600;color:var(--muted);">Gastado en vivienda</div>
+                <div style="font-size:11px;color:var(--muted);">El alquiler de 20 años — igual que cualquier inquilino. A cambio viviste allí. No es una pérdida diferente a alquilar en el mercado</div>
+              </div>
+              <div>
+                <div style="font-size:11px;font-weight:600;color:var(--danger);">Pierdes</div>
+                <div style="font-size:11px;color:var(--muted);">La opción de comprar por debajo de mercado — ese era el beneficio económico real de la operación</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:140px 1fr;border-radius:6px;overflow:hidden;border:1px solid var(--border2);">
+        <div style="background:var(--bg3);padding:16px 18px;display:flex;flex-direction:column;justify-content:center;border-right:1px solid var(--border);">
+
+          <div style="font-family:DM Mono,monospace;font-size:11px;color:var(--accent);">~2059</div>
+          <div style="font-family:'Inter',sans-serif;font-size:16px;font-weight:300;color:var(--text);">Año 30</div>
+        </div>
+        <div style="background:var(--bg2);padding:14px 18px;">
+          <div style="font-size:13px;font-weight:500;color:var(--accent);margin-bottom:4px;">El piso es 100% tuyo y libre</div>
+          <div style="font-size:12px;color:var(--muted);">Caduca la calificación VPO. Puedes vender al precio que quieras, alquilar libremente, reformar sin restricciones. Sin derecho de tanteo, sin precio regulado. Es un activo completamente libre. Si compraste en el año 20, llevas 10 años como propietario con restricciones VPO — a partir de 2059 desaparecen todas.</div>
+        </div>
+      </div>
+
+      <div style="background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:14px 18px;font-size:12px;color:var(--muted);">
+        Durante el periodo de alquiler el subarrendamiento está expresamente prohibido por contrato (cláusula 8ª). Una vez ejercida la opción de compra, la vivienda sigue sujeta a la calificación VPO durante 30 años desde la calificación definitiva — en ese periodo tampoco se puede alquilar libremente. La Delegación Territorial de la Junta de Andalucía puede autorizar excepciones, pero no es automático.
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Conclusión -->
+  <div class="section">
+    <div class="section-header"><span class="section-title">Conclusión</span></div>
+    <div class="summary-box">
+      <div class="sum-col">
+        <h3 class="green">A favor</h3>
+        <ul class="sum-list">
+          <li>Cada vivienda incluye plaza de garaje en sótano y trastero vinculados — son parte inseparable de la adjudicación y del contrato</li>
+          <li>Las aportaciones de 39.000 € al capital social (25k entrada + 14k en obra y llaves) se recuperan al comprar y se aplican al precio final — no son un coste perdido</li>
+          <li>La cocina viene equipada: vitrocerámica, horno, campana, frigorífico, lavadora y lavavajillas incluidos en contrato</li>
+          <li>Sistema de climatización frío/calor por conductos y aerotermia A+ incluidos en la construcción — no hay que comprar aparatos</li>
+          <li>Galivivienda + CONCOVI es una estructura cooperativa sin ánimo de lucro, afiliada a la confederación nacional, con gestión profesional homologada</li>
+          <li>El precio de compra al finalizar el alquiler puede ser significativamente inferior al valor de mercado, dependiendo del descuento aplicado sobre rentas</li>
+          <li>Los causahabientes (herederos) del socio pueden ejercer la opción de compra al finalizar el periodo de alquiler</li>
+          <li>Promoción en 4 parcelas en Vélez-Málaga y Torre del Mar — 188 viviendas con distintas ubicaciones y tipologías</li>
+          <li>Calificación energética A en todos los edificios</li>
+        </ul>
+      </div>
+      <div class="sum-col">
+        <h3 class="red">Riesgos a considerar</h3>
+        <ul class="sum-list">
+          <li>El porcentaje de descuento sobre rentas no está fijado contractualmente — el contrato garantiza mínimo 50% pero el folleto anuncia "aprox. 85%". Lo decide el Consejo Rector al finalizar el periodo de alquiler</li>
+          <li>Comunidad e IBI se pagan encima del alquiler (confirmado en cláusula 5ª del contrato) y no están cuantificados en la documentación pública. Estima 80-130 €/mes adicionales según las instalaciones de cada edificio</li>
+          <li>Si se firma el contrato de participación y se renuncia sin que otro socio tome la posición, se pierden los 25.000 € desembolsados — cláusula penal explícita</li>
+          <li>La vivienda no es un activo libre hasta ~30 años después de la calificación definitiva. Hasta entonces, precio de venta regulado y derecho de tanteo de la Junta de Andalucía</li>
+          <li>El préstamo promotor pendiente en el momento de ejercer la opción de compra influye directamente en el porcentaje de descuento que aplicará el Consejo Rector</li>
+          <li>Los proyectos están en fase de redacción — licencias de obra y calificación provisional pendientes. Los planos y superficies son orientativos y pueden variar</li>
+        </ul>
+      </div>
+    </div>
+    <div style="border:1px solid rgba(220,38,38,0.25);border-radius:10px;background:rgba(220,38,38,0.04);padding:16px 20px;margin-top:10px;">
+      <div style="font-size:11px;font-weight:600;color:var(--danger);letter-spacing:0.05em;margin-bottom:10px;">RIESGO ANTES DE PAGAR — PARALIZACIÓN DE OBRA</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;" class="riesgos-2049-grid">
+        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:12px 14px;">
+          <div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:4px;">Si la cooperativa entra en insolvencia</div>
+          <div style="font-size:11px;color:var(--muted);line-height:1.6;">El contrato solo obliga a devolver las aportaciones nominales — sin intereses, sin compensación por inflación. Si metes 39.000 € y la obra se paraliza a los 3 años, recuperas 39.000 € pero habrás perdido el equivalente a ~3 años de IPC acumulado sobre ese capital.</div>
+        </div>
+        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:12px 14px;">
+          <div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:6px;">Qué exigir antes de pagar</div>
+          <div style="display:flex;flex-direction:column;gap:5px;">
+            <div style="font-size:11px;color:var(--muted);display:flex;gap:8px;"><span style="color:var(--danger);font-weight:600;">1</span><span>Aval bancario o póliza de seguro que garantiza tus aportaciones — obligatorio por Ley 57/1968 y LOE. Sin este documento no tienes garantía legal.</span></div>
+            <div style="font-size:11px;color:var(--muted);display:flex;gap:8px;"><span style="color:var(--danger);font-weight:600;">2</span><span>Confirmación de que el préstamo promotor está concedido o en proceso avanzado — sin financiación bancaria no hay obra.</span></div>
+            <div style="font-size:11px;color:var(--muted);display:flex;gap:8px;"><span style="color:var(--danger);font-weight:600;">3</span><span>Plan de viabilidad económica aprobado en Asamblea General — el contrato lo menciona pero no lo adjunta.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:18px 20px;margin-top:10px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
+      <div>
+        <div style="font-size:12px;font-weight:500;color:var(--text);margin-bottom:4px;">¿Ves algún dato incorrecto o que se puede mejorar?</div>
+        <div style="font-size:11px;color:var(--muted);line-height:1.6;max-width:520px;">Esta herramienta se ofrece sin ánimo de lucro como análisis público de la documentación disponible. Si tienes información más precisa del contrato, detectas un error en los cálculos o quieres añadir algo, escríbeme.</div>
+      </div>
+      <div style="background:var(--bg3);border:1px solid var(--border2);border-radius:5px;padding:9px 16px;font-family:'DM Mono',monospace;font-size:12px;color:var(--text);white-space:nowrap;flex-shrink:0;user-select:all;">contact@jjalcantara.dev</div>
+    </div>
+    <div class="footer-note" style="margin-top:8px;">
+      <strong>Contacto Galivivienda:</strong> <strong>917 818 664</strong> · <strong>info@galivivienda.com</strong> · <strong>www.galivivienda.com</strong>
+      <br style="margin-bottom:6px;">
+      <strong>Plazo solicitudes: 12 mayo – 2 junio</strong> — Descarga formularios y bases reguladoras por parcela en <a href="https://emvipsa.es/procedimientos-de-adjucacion-de-viviendas-de-proteccion-oficial/" target="_blank" rel="noopener noreferrer" style="color:var(--accent);text-decoration:underline;text-underline-offset:3px;">emvipsa.es ↗</a> · También en <strong>cooperopen.org/velez-malaga</strong>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const params = { ipc: 2, pct: 50, com: 0, rentIpc: true, years: 20 };
+
+function setParam(k, v, el) {
+  params[k] = v;
+  el.closest('.ctrl-row').querySelectorAll('.btn-opt').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  render();
+}
+
+function fmt(n) { return Math.round(n).toLocaleString('es-ES') + '€'; }
+function fmtDec(n) { return n.toLocaleString('es-ES', {minimumFractionDigits:2, maximumFractionDigits:2}) + '€'; }
+
+function parseNum(str) {
+  // Remove dots used as thousands separators, keep comma as decimal
+  return parseFloat(String(str).replace(/\./g, '').replace(',', '.')) || 0;
+}
+function fmtInput(el) {
+  let raw = parseNum(el.value);
+  if (isNaN(raw) || raw < 0) raw = 0;
+  el.value = raw > 0 ? raw.toLocaleString('es-ES') : '';
+  render();
+}
+function getInputs() {
+  const adjBase = parseNum(document.getElementById('inp-adj').value) || 196760;
+  const rentBase = Math.max(0, parseFloat(document.getElementById('inp-rent').value) || 819.84);
+  return { adjBase, rentBase };
+}
+
+function calcBuy(ipc, pct, rentIpc, years) {
+  const { adjBase, rentBase } = getInputs();
+  const months = years * 12;
+  const adjFinal = adjBase * Math.pow(1 + ipc / 100, years);
+  let totalRent = 0;
+  for (let m = 0; m < months; m++) {
+    totalRent += rentIpc ? rentBase * Math.pow(1 + ipc / 100, m / 12) : rentBase;
+  }
+  const discount = totalRent * (pct / 100);
+  const buyGross = years > 0 ? Math.max(0, adjFinal - discount) : 0;
+  const buyNet = years > 0 ? Math.max(0, buyGross - 39000) : 0;
+  const rentLastYear = rentIpc ? rentBase * Math.pow(1 + ipc / 100, years) : rentBase;
+  return { adjFinal, totalRent, buyGross, buyNet, rentBase, rentLastYear };
+}
+
+function render() {
+  const { ipc, pct, com, rentIpc, years } = params;
+  const { adjBase, rentBase } = getInputs();
+  const { adjFinal, totalRent, buyGross, buyNet, rentLastYear } = calcBuy(ipc, pct, rentIpc, years);
+  const totalCom = com * (years > 0 ? years : 20) * 12;
+  const ibi = 15 * (years > 0 ? years : 20) * 12;
+  const notary = buyNet * 0.05;
+  const totalAll = 39000 + totalRent + totalCom + ibi + buyNet + notary;
+
+  const yearsLabel = years > 0 ? years + ' años' : 'indefinido (sin compra)';
+  const rentInfo = rentIpc && ipc > 0
+    ? 'Alquiler año 1: ' + fmtDec(rentBase) + ' · Año ' + (years||'N') + ': ' + fmtDec(rentLastYear) + ' (IPC ' + ipc + '%)'
+    : 'Alquiler fijo: ' + fmtDec(rentBase) + '/mes durante ' + yearsLabel;
+
+  document.getElementById('kpi-label').textContent =
+    years + ' años alquiler · IPC ' + ipc + '% · Descuento en la compra ' + pct + '% · Alquiler ' + (rentIpc ? 'sube con IPC' : 'fijo') + ' · Comunidad ' + (com === 0 ? 'no estimada' : com + '€/mes');
+  document.getElementById('kpi-monthly').textContent = fmt(rentBase + (com || 0) + 15);
+  document.getElementById('kpi-monthly-sub').textContent = 'Año 1: alquiler ' + fmtDec(rentBase) + ' + IBI 15€' + (com > 0 ? ' + comunidad ' + com + '€' : '') + (rentIpc && ipc > 0 ? ' · Año ' + (years||'N') + ': ' + fmtDec(rentLastYear) : '');
+  document.getElementById('kpi-buy-label').textContent = years > 0 ? 'Precio compra año ' + years : 'Precio compra';
+  document.getElementById('kpi-buy').textContent = years > 0 ? fmt(buyNet) : 'N/A';
+  document.getElementById('kpi-buy-sub').textContent = years > 0 ? 'Bruto ' + fmt(buyGross) + ' – 39k devueltos' : 'Sin ejercer opción de compra';
+  document.getElementById('kpi-total').textContent = fmt(totalAll);
+  document.getElementById('kpi-adj-label').textContent = 'Valor piso año ' + (years || 20);
+  document.getElementById('kpi-adj').textContent = fmt(adjFinal);
+  document.getElementById('kpi-adj-sub').textContent = ipc > 0
+    ? 'Subiendo ' + ipc + '% anual durante ' + (years||20) + ' años: ' + fmt(adjBase) + ' → ' + fmt(adjFinal) + ' (+' + Math.round((adjFinal/adjBase-1)*100) + '%)'
+    : 'IPC 0% — sin variación respecto al valor base 2025. Selecciona 2% o 3% para ver el efecto.';
+  // Desglose
+  document.getElementById('brk-rent').textContent = fmt(totalRent);
+  document.getElementById('brk-ibi').textContent = fmt(ibi);
+  const brkCom = document.getElementById('brk-com');
+  const brkComWrap = document.getElementById('brk-com-wrap');
+  if (com > 0) { brkCom.textContent = fmt(totalCom); brkComWrap.style.display = ''; }
+  else { brkComWrap.style.display = 'none'; }
+  const brkBuyWrap = document.getElementById('brk-buy-wrap');
+  const brkBuy = document.getElementById('brk-buy');
+  const brkNotary = document.getElementById('brk-notary');
+  if (years > 0) { brkBuy.textContent = fmt(buyNet); brkNotary.textContent = fmt(notary); brkBuyWrap.style.display = ''; }
+  else { brkBuyWrap.style.display = 'none'; }
+
+  // Payments table
+  const stateMap = { ok: 'Confirmado', info: 'Estimado', warn: 'Sin confirmar', danger: 'Incierto' };
+  const rentLabel = 'Alquiler ' + (years > 0 ? years : '?') + ' años' + (rentIpc && ipc > 0 ? ' (sube IPC ' + ipc + '%)' : ipc > 0 ? ' (fijo, no sube)' : ' (sin IPC)');
+  const rows = [
+    ['Aportación entrada cooperativa', 'Día 1 (tras sorteo)', 25000, 'ok', 'Contrato participación social — cláusula 4ª'],
+    ['Aportación adicional — cuotas de 400€/mes durante la obra + 9.000€ en entrega de llaves', 'Tras licencia obras', 14000, 'ok', 'Contrato participación social — cláusula 4ª · Tramos: cuotas mensuales de 400€ durante la construcción + 9.000€ a la entrega de llaves · Total: 14.000€'],
+    [rentLabel, 'Años 1–' + (years || 20), Math.round(totalRent), 'info', rentInfo],
+    ['IBI (estimado ~15€/mes, sigue tras la compra)', 'Años 1–' + (years||20) + ' y más allá', Math.round(ibi), 'warn', '⚠ Estimación solo para el periodo de alquiler · El IBI no desaparece al comprar — se paga de por vida · Importe real depende del valor catastral, revisable por el ayuntamiento · Posible bonificación 50% en VPO'],
+    ...(com > 0
+      ? [['Comunidad ' + (years || 20) + ' años (' + com + '€/mes)', 'Años 1–' + (years || 20), totalCom, 'warn', 'Confirmado por contrato (cláusula 5ª) · importe exacto pendiente']]
+      : [['Comunidad (sin cuantificar, sigue tras la compra)', 'Años 1–' + (years||20) + ' y más allá', 'Sin confirmar', 'danger', '⚠ No se sabe el importe hasta que se constituya la comunidad de propietarios · Estima 80-130€/mes según instalaciones (piscina, ascensor, zonas comunes) · No desaparece al comprar — se paga de por vida']]),
+    ...(years > 0 ? [
+      ['Precio compra año ' + years + ' — neto (descuento ' + pct + '% sobre rentas)', 'Año ' + years, Math.round(buyNet), 'info',
+        'Valor adjudicación ' + fmt(adjFinal) + ' – descuento ' + pct + '% rentas (' + fmt(Math.round(totalRent * (pct/100))) + ') = bruto ' + fmt(buyGross) + ' – 39k aportaciones devueltas = neto ' + fmt(buyNet) + ' · El % final lo fija el Consejo Rector'],
+      ['Gastos compraventa año ' + years + ' (~5%)', 'Año ' + years, Math.round(notary), 'warn', 'Notaría, registro, ITP · a cargo del comprador (cláusula 16ª)'],
+    ] : [
+      ['Opción de compra', '—', 'No ejercida', 'info', 'Selecciona años para calcular el precio de compra'],
+    ]),
+  ];
+
+  let tbody = '';
+  rows.forEach(([c, w, a, s, n]) => {
+    const amtStr = typeof a === 'number' ? '<span class="mono">' + fmt(a) + '</span>' : a;
+    tbody += '<tr><td>' + c + '</td><td style="color:var(--muted);font-size:11px;">' + w + '</td><td style="text-align:right">' + amtStr + '</td><td><span class="tag tag-' + s + '">' + (stateMap[s] || '?') + '</span></td><td style="color:var(--muted);font-size:11px;">' + n + '</td></tr>';
+  });
+  tbody += '<tr class="subtotal"><td colspan="2"><strong>Total sin gastos compraventa</strong></td><td style="text-align:right" class="mono">' + fmt(totalAll - notary) + '</td><td></td><td style="color:var(--muted);font-size:11px;">Comunidad ' + (com === 0 ? 'no incluida' : 'incluida') + '</td></tr>';
+  tbody += '<tr class="total"><td colspan="2"><strong>TOTAL ESTIMADO COMPLETO</strong></td><td style="text-align:right;color:var(--accent)" class="mono">' + fmt(totalAll) + '</td><td></td><td style="color:var(--muted);font-size:11px;">Valor piso año ' + (years || 20) + ': ' + fmt(adjFinal) + '</td></tr>';
+  document.getElementById('payments-tbody').innerHTML = tbody;
+
+}
+render();
+</script>
+
+</main>
+
+<footer class="site-footer">
+  <a href="https://jjalcantara.dev" class="site-footer-logo" target="_blank" rel="noopener noreferrer">
+    <svg class="logo-svg" fill="currentColor" style="height:34px;width:auto;color:var(--text);" viewBox="0 0 367 278" xmlns="http://www.w3.org/2000/svg"><path d="m64 34v18l17.3 0.2 17.2 0.3v78 78.1l-2.6 4.9c-5 9.8-15.5 14.8-26.4 12.5-10.5-2.2-18-10.7-19.4-22.2l-0.6-5.3h-17.5-17.5l0.3 6c0.9 16.2 6.2 28.4 17.2 39.6 18.4 18.7 45.6 23.3 69.7 11.7 9.1-4.4 21.5-16.7 26-25.8 7.1-14.3 6.7-7.9 7.1-116.3l0.3-97.7h-35.6-35.5zm27 0v9h-8.5-8.5v-9-9h8.5 8.5z"/><path d="m143.9 16.4c-0.2 0.2-0.3 8.3-0.1 18l0.3 17.6h13.4 13.5l0.1 25.7c0 14.2 0.4 27.8 0.7 30.1l0.7 4.4 7.5-6.5c4.1-3.5 11.4-10.5 16.2-15.5l8.7-9 8.5 10.1c4.7 5.6 10.6 12.4 13 15.1l4.5 4.9 3-6.8c1.9-4.1 3.5-6.5 4-5.9 1.3 1.3 28.9 60.9 29.7 63.9l0.6 2.5h-25.6-25.6v17.5 17.5l34.6 0.2 34.6 0.3 14.1 30.7 14.2 30.8h19.3c10.5 0 19.2-0.4 19.2-0.8 0-0.7-21.1-46.1-40.5-87.2-4.8-10.2-18.1-38.5-29.5-63-31.4-67.1-44.4-94.3-45.3-94.4-0.5 0-7.3 13.3-15 29.7l-14.2 29.7-0.3-30-0.2-30h-31.8c-17.5 0-32.1 0.2-32.3 0.4z"/><path d="m198.1 99.2c-2.1 4.6-10.3 21.8-18.1 38.3-24 50.7-29 61.3-29 61.9 0 0.3 4.6 0.7 10.3 0.8l10.2 0.3-0.3 4.4c-0.4 6.2-4.8 13.9-10 17.6-4.1 2.8-5 3-13.4 3.1h-9l-4.2 8.5c-2.4 4.6-6.2 11.5-8.5 15.3-4.8 7.7-4.8 7.6 3.4 10.2 7.9 2.5 21.9 3 30.9 1 22.2-5 39.2-21.3 45.3-43.7 1.6-5.8 1.8-12 1.8-65.9v-59.5l-2.7-0.3c-2.6-0.3-3 0.3-6.7 8z"/><path d="m216 127.2c0 8 0.4 13.8 0.9 13.2 1.1-1.2 12.1-25.3 12.1-26.5 0-0.5-2.9-0.9-6.5-0.9h-6.5z"/></svg>
+    <div>
+      <div style="font-family:'Inter',sans-serif;font-size:13px;color:var(--text);font-weight:500;">Jesús Jiménez Alcántara</div>
+      <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);margin-top:3px;letter-spacing:0.05em;">jjalcantara.dev ↗</div>
+    </div>
+  </a>
+  <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);text-align:right;line-height:2;">
+    <div>Calculadora VPO · Galivivienda Fortalezas de Vélez · Vélez-Málaga</div>
+    <div style="opacity:0.55;">Análisis basado en documentación pública · No constituye asesoramiento financiero ni legal</div>
+    <div style="margin-top:4px;"><a href="privacy.html" style="color:var(--muted);text-decoration:underline;text-underline-offset:2px;font-size:10px;opacity:0.7;">Política de privacidad</a></div>
+  </div>
+</footer>
+
+<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#fff;border-top:1px solid rgba(0,0,0,0.12);padding:14px 24px;box-shadow:0 -4px 24px rgba(0,0,0,0.07);">
+  <div style="max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+    <p style="font-size:12px;color:#78716c;line-height:1.6;margin:0;">
+      Esta web usa <strong style="color:#111110;">Vercel</strong> (alojamiento) y <strong style="color:#111110;">Google Fonts</strong> (tipografías) — ambos pueden registrar tu IP. No hay analíticas ni tracking.
+      <a href="privacy.html" style="color:#111110;text-underline-offset:2px;">Política de privacidad ↗</a>
+    </p>
+    <button onclick="document.getElementById('cookie-banner').style.display='none';localStorage.setItem('cookie-ok','1');" style="background:#111110;color:#fff;border:none;padding:8px 18px;border-radius:4px;font-size:12px;font-weight:500;cursor:pointer;white-space:nowrap;flex-shrink:0;">Entendido</button>
+  </div>
+</div>
+<script>
+  if (!localStorage.getItem('cookie-ok')) {
+    document.getElementById('cookie-banner').style.display = 'flex';
+  }
+</script>
+
+</body>
+</html>
