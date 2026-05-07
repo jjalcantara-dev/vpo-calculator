@@ -175,9 +175,10 @@
     .intro-band { padding-left: 16px !important; padding-right: 16px !important; }
     .kpi-band { padding-left: 16px !important; padding-right: 16px !important; }
     .callout-band { padding-left: 16px !important; padding-right: 16px !important; }
-    /* Intro strip: stack with divider */
+    /* Intro strip: stack with divider, label above text */
     .intro-strip { grid-template-columns: 1fr !important; }
-    .intro-strip > div:first-child { border-bottom: 1px solid var(--border); padding-bottom: 12px; }
+    .intro-strip > div { flex-direction: column; gap: 6px; }
+    .intro-strip > div:first-child { border-bottom: 1px solid var(--border); padding-bottom: 14px; }
     /* Table: remove forced scroll, hide Fuente column */
     table { min-width: unset !important; }
     thead th:nth-child(5), tbody td:nth-child(5) { display: none; }
