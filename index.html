@@ -191,11 +191,17 @@
     .intro-strip { grid-template-columns: 1fr !important; }
     .intro-strip > div { flex-direction: column; gap: 6px; }
     .intro-strip > div:first-child { border-bottom: 1px solid var(--border); padding-bottom: 14px; }
-    /* Table: remove forced scroll, hide Fuente column */
-    table { min-width: unset !important; }
-    thead th:nth-child(5), tbody td:nth-child(5) { display: none; }
-    thead th, tbody td { padding: 8px 10px; }
-    tbody td { font-size: 12px; word-break: break-word; }
+    /* Table: card layout on mobile */
+    .table-wrap { border: none; box-shadow: none; background: transparent; }
+    table { min-width: unset; }
+    thead { display: none; }
+    .mob-card-cell { padding: 3px 0 !important; border: none !important; background: transparent !important; }
+    tbody tr:hover .mob-card-cell { background: transparent !important; }
+    .mob-card { border: 1px solid var(--border); border-radius: 6px; padding: 10px 12px; background: var(--bg); }
+    .mob-card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 7px; }
+    .mob-card-concept { font-size: 12px; color: var(--text); line-height: 1.5; flex: 1; }
+    .mob-card-bottom { display: flex; align-items: center; justify-content: space-between; }
+    .mob-card-when { font-size: 10px; color: var(--muted2); }
     /* Summary callout */
     #summary-callout { font-size: 11px; line-height: 2; }
     /* Scenario label bar */
@@ -855,12 +861,40 @@ function render() {
     ]),
   ];
 
+  const isMobile = window.innerWidth <= 700;
   let tbody = '';
-  rows.forEach(([c, w, a, s, n]) => {
-    const amtStr = typeof a === 'number' ? '<span class="mono">' + fmt(a) + '</span>' : a;
-    tbody += '<tr><td>' + c + '</td><td style="color:var(--muted);font-size:11px;">' + w + '</td><td style="text-align:right">' + amtStr + '</td><td><span class="tag tag-' + s + '">' + (stateMap[s] || '?') + '</span></td><td style="color:var(--muted);font-size:11px;">' + n + '</td></tr>';
+  rows.forEach(function(row) {
+    var c = row[0], w = row[1], a = row[2], s = row[3];
+    if (isMobile) {
+      var amtDisplay = typeof a === 'number'
+        ? '<span style="font-family:\'DM Mono\',monospace;font-size:14px;font-weight:600;white-space:nowrap;flex-shrink:0;">' + fmt(a) + '</span>'
+        : '<span style="font-family:\'DM Mono\',monospace;font-size:12px;white-space:nowrap;flex-shrink:0;color:var(--muted);">' + a + '</span>';
+      tbody += '<tr><td colspan="5" class="mob-card-cell">'
+        + '<div class="mob-card">'
+        + '<div class="mob-card-top">'
+        + '<div class="mob-card-concept">' + c + '</div>'
+        + amtDisplay
+        + '</div>'
+        + '<div class="mob-card-bottom">'
+        + '<span class="tag tag-' + s + '">' + (stateMap[s] || '?') + '</span>'
+        + '<span class="mob-card-when">' + w + '</span>'
+        + '</div>'
+        + '</div></td></tr>';
+    } else {
+      var amtStr = typeof a === 'number' ? '<span class="mono">' + fmt(a) + '</span>' : a;
+      var n = row[4];
+      tbody += '<tr><td>' + c + '</td><td style="color:var(--muted);font-size:11px;">' + w + '</td><td style="text-align:right">' + amtStr + '</td><td><span class="tag tag-' + s + '">' + (stateMap[s] || '?') + '</span></td><td style="color:var(--muted);font-size:11px;">' + n + '</td></tr>';
+    }
   });
-  tbody += '<tr class="total"><td colspan="2"><strong>TOTAL ESTIMADO COMPLETO</strong></td><td style="text-align:right;color:var(--accent)" class="mono">' + fmt(totalAll) + '</td><td></td><td style="color:var(--muted);font-size:11px;">Valor piso año ' + (years || 20) + ': ' + fmt(adjFinal) + '</td></tr>';
+  if (isMobile) {
+    tbody += '<tr><td colspan="5" class="mob-card-cell">'
+      + '<div style="background:var(--bg3);border:1px solid var(--border2);border-radius:6px;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;gap:12px;">'
+      + '<strong style="font-size:12px;">Total estimado</strong>'
+      + '<span style="font-family:\'DM Mono\',monospace;font-size:16px;font-weight:700;color:var(--accent);">' + fmt(totalAll) + '</span>'
+      + '</div></td></tr>';
+  } else {
+    tbody += '<tr class="total"><td colspan="2"><strong>TOTAL ESTIMADO COMPLETO</strong></td><td style="text-align:right;color:var(--accent)" class="mono">' + fmt(totalAll) + '</td><td></td><td style="color:var(--muted);font-size:11px;">Valor piso año ' + (years || 20) + ': ' + fmt(adjFinal) + '</td></tr>';
+  }
   document.getElementById('payments-tbody').innerHTML = tbody;
 
 }
