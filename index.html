@@ -253,7 +253,7 @@
       {
         "@type": "Question",
         "name": "¿Cuánto hay que aportar a la cooperativa Galivivienda?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Las aportaciones al capital social suman 39.000€: 25.000€ al firmar el contrato de participación tras el sorteo, y 14.000€ adicionales (cuotas mensuales de 400€ durante la construcción más 9.000€ a la entrega de llaves). Estas aportaciones se recuperan íntegramente al ejercer la opción de compra y se descuentan del precio final." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Las aportaciones al capital social suman 39.000€: 25.000€ al firmar la adhesión a la cooperativa, y 14.000€ adicionales repartidos en 208,33€/mes durante 24 meses desde la licencia de obras (5.000€) más 9.000€ en la entrega de la vivienda. Estas aportaciones se recuperan íntegramente al ejercer la opción de compra y se descuentan del precio final." }
       },
       {
         "@type": "Question",
@@ -845,7 +845,7 @@ function render() {
   const rentLabel = 'Alquiler ' + (years > 0 ? years : '?') + ' años' + (rentIpc && ipc > 0 ? ' (sube IPC ' + ipc + '%)' : ipc > 0 ? ' (fijo, no sube)' : ' (sin IPC)');
   const rows = [
     ['Aportación entrada cooperativa', 'Día 1 (tras sorteo)', 25000, 'ok', 'Contrato participación social, cláusula 4ª'],
-    ['Aportación adicional ; cuotas de 400€/mes durante la obra + 9.000€ en entrega de llaves', 'Tras licencia obras', 14000, 'ok', 'Contrato participación social, cláusula 4ª · Tramos: cuotas mensuales de 400€ durante la construcción + 9.000€ a la entrega de llaves · Total: 14.000€'],
+    ['Aportación durante obra y llaves · 208,33€/mes × 24 meses = 5.000€ + 9.000€ al recoger las llaves', 'Durante 24 meses de obra + llaves', 14000, 'ok', 'Contrato participación social, cláusula 4ª · 208,33€/mes durante 24 meses desde licencia de obras y calificación provisional (5.000€) + 9.000€ en entrega de la vivienda e inicio del periodo de alquiler · Total: 14.000€'],
     [rentLabel, 'Años 1–' + (years || 20), Math.round(totalRent), 'info', rentInfo],
     ['IBI (impuesto municipal del piso)', 'Todos los años', '~500–600€/año', 'warn', 'Vélez-Málaga aplica un tipo del 0,65% sobre el valor catastral. Para un piso VPO de 81 m² el valor catastral estimado ronda 80.000–100.000€, lo que da unos 520–650€/año (~43–54€/mes). Hay bonificación del 50% para VPO, pero solo durante los 3 primeros años desde la calificación definitiva. Lo paga el inquilino (cláusula 5ª) y sigue pagándose tras la compra.'],
     ...(com > 0

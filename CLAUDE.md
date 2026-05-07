@@ -62,7 +62,7 @@ adjFinal = adjBase × (1 + ipc/100)^years
 totalRent = Σ rentBase × (1 + ipc/100)^(m/12)  [para m=0..months, si rentIpc=true]
 discount = totalRent × (pct/100)
 buyGross = adjFinal - discount
-buyNet = buyGross - 39000   // los 39k se devuelven al comprar
+buyNet = buyGross - 39000   // los 39k de aportaciones se devuelven íntegramente al comprar
 ```
 
 ## Sistema de diseño
@@ -100,8 +100,11 @@ buyNet = buyGross - 39000   // los 39k se devuelven al comprar
 
 - Valor piso 2025: **196.760 €** (Ático A, Edificio 1, 3 dorm, 81,70 m²)
 - Alquiler mensual base: **819,84 €/mes**
-- Aportaciones cooperativa: **39.000 €** (25k entrada + 14k en obra)
-- IBI estimado: **~15 €/mes**
+- Aportaciones cooperativa: **39.000 €** desglosadas en:
+  - 25.000 € al firmar la adhesión a la cooperativa
+  - 208,33 €/mes × 24 meses desde licencia de obras = 5.000 €
+  - 9.000 € en entrega de la vivienda e inicio del periodo de alquiler
+- IBI: **~500–600 €/año** (tipo 0,65% sobre valor catastral en Vélez-Málaga; bonificación 50% VPO solo los 3 primeros años)
 - Periodo mínimo alquiler: **20 años**
 - Descuento mínimo contractual: **50%** (cláusula 16ª contrato arrendamiento)
 

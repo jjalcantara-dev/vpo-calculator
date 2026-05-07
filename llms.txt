@@ -29,7 +29,7 @@ Permite simular y calcular el coste total de participar en una VPO cooperativa:
 ## Cómo funciona la VPO cooperativa
 
 1. El socio paga 25.000€ al firmar el contrato de participación social
-2. Paga cuotas de 400€/mes durante la construcción + 9.000€ en entrega de llaves
+2. Paga 208,33€/mes durante 24 meses desde la licencia de obras (5.000€) + 9.000€ en entrega de llaves
 3. Recibe las llaves (~2029) y paga alquiler regulado durante mínimo 20 años
 4. En el año 20 (~2049) puede ejercer la opción de compra:
    - Precio = valor adjudicación ajustado por IPC - descuento sobre rentas - 39.000€ aportaciones devueltas
