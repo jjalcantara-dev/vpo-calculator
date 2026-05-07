@@ -444,7 +444,6 @@
             <th>Cuándo</th>
             <th style="text-align:right">Importe</th>
             <th>Estado</th>
-            <th>Fuente</th>
           </tr>
         </thead>
         <tbody id="payments-tbody"></tbody>
@@ -882,8 +881,7 @@ function render() {
         + '</div></td></tr>';
     } else {
       var amtStr = typeof a === 'number' ? '<span class="mono">' + fmt(a) + '</span>' : a;
-      var n = row[4];
-      tbody += '<tr><td>' + c + '</td><td style="color:var(--muted);font-size:11px;">' + w + '</td><td style="text-align:right">' + amtStr + '</td><td><span class="tag tag-' + s + '">' + (stateMap[s] || '?') + '</span></td><td style="color:var(--muted);font-size:11px;">' + n + '</td></tr>';
+      tbody += '<tr><td>' + c + '</td><td style="color:var(--muted);font-size:11px;">' + w + '</td><td style="text-align:right">' + amtStr + '</td><td><span class="tag tag-' + s + '">' + (stateMap[s] || '?') + '</span></td></tr>';
     }
   });
   if (isMobile) {
@@ -893,7 +891,7 @@ function render() {
       + '<span style="font-family:\'DM Mono\',monospace;font-size:16px;font-weight:700;color:var(--accent);">' + fmt(totalAll) + '</span>'
       + '</div></td></tr>';
   } else {
-    tbody += '<tr class="total"><td colspan="2"><strong>TOTAL ESTIMADO COMPLETO</strong></td><td style="text-align:right;color:var(--accent)" class="mono">' + fmt(totalAll) + '</td><td></td><td style="color:var(--muted);font-size:11px;">Valor piso año ' + (years || 20) + ': ' + fmt(adjFinal) + '</td></tr>';
+    tbody += '<tr class="total"><td colspan="2"><strong>TOTAL ESTIMADO COMPLETO</strong></td><td style="text-align:right;color:var(--accent)" class="mono">' + fmt(totalAll) + '</td><td></td></tr>';
   }
   document.getElementById('payments-tbody').innerHTML = tbody;
 
