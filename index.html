@@ -171,6 +171,18 @@
     h1 { font-size: clamp(26px, 6vw, 38px); }
     .riesgos-2049-grid { grid-template-columns: 1fr !important; }
     .riesgos-2049-money { grid-template-columns: 1fr !important; }
+    /* Control hints: ocultos, se muestran en bottom sheet */
+    .ctrl-hint { display: none; }
+    .ctrl-label { cursor: pointer; display: flex; align-items: center; gap: 5px; }
+    .ctrl-label::after { content: 'ⓘ'; color: var(--muted2); font-weight: 400; text-transform: none; letter-spacing: 0; font-size: 11px; line-height: 1; }
+    .ctrl-group { border-bottom: 1px solid var(--border); padding-bottom: 12px; }
+    .ctrl-group:last-child { border-bottom: none; padding-bottom: 0; }
+    /* Bottom sheet */
+    #hint-sheet { display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 600; background: var(--bg); border-top: 1px solid var(--border); border-radius: 16px 16px 0 0; padding: 20px 20px 36px; box-shadow: 0 -8px 32px rgba(0,0,0,0.10); }
+    #hint-sheet-title { font-size: 10px; font-weight: 700; color: var(--muted2); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; }
+    #hint-sheet-body { font-size: 14px; color: var(--muted); line-height: 1.65; }
+    #hint-sheet-close { position: absolute; top: 14px; right: 16px; background: var(--bg3); border: none; border-radius: 50%; width: 28px; height: 28px; font-size: 16px; cursor: pointer; color: var(--muted); display: flex; align-items: center; justify-content: center; }
+    #hint-sheet-overlay { display: none; position: fixed; inset: 0; z-index: 599; background: rgba(0,0,0,0.25); }
     /* Band horizontal padding */
     .intro-band { padding-left: 16px !important; padding-right: 16px !important; }
     .kpi-band { padding-left: 16px !important; padding-right: 16px !important; }
@@ -881,9 +893,34 @@ render();
     <button onclick="document.getElementById('cookie-banner').style.display='none';localStorage.setItem('cookie-ok','1');" style="background:#111110;color:#fff;border:none;padding:8px 18px;border-radius:4px;font-size:12px;font-weight:500;cursor:pointer;white-space:nowrap;flex-shrink:0;">Entendido</button>
   </div>
 </div>
+<div id="hint-sheet-overlay" onclick="closeHintSheet()"></div>
+<div id="hint-sheet">
+  <button id="hint-sheet-close" onclick="closeHintSheet()">×</button>
+  <div id="hint-sheet-title"></div>
+  <div id="hint-sheet-body"></div>
+</div>
 <script>
   if (!localStorage.getItem('cookie-ok')) {
     document.getElementById('cookie-banner').style.display = 'flex';
+  }
+</script>
+<script>
+  function closeHintSheet() {
+    document.getElementById('hint-sheet').style.display = 'none';
+    document.getElementById('hint-sheet-overlay').style.display = 'none';
+  }
+  if (window.innerWidth <= 700) {
+    document.querySelectorAll('.ctrl-label').forEach(function(lbl) {
+      lbl.addEventListener('click', function(e) {
+        var group = lbl.closest('.ctrl-group');
+        var hint = group.querySelector('.ctrl-hint');
+        if (!hint) return;
+        document.getElementById('hint-sheet-title').textContent = lbl.childNodes[0] ? lbl.childNodes[0].textContent.trim() : lbl.textContent.trim();
+        document.getElementById('hint-sheet-body').textContent = hint.textContent;
+        document.getElementById('hint-sheet').style.display = 'block';
+        document.getElementById('hint-sheet-overlay').style.display = 'block';
+      });
+    });
   }
 </script>
 
