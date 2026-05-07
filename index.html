@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -134,7 +134,7 @@
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "Calculadora VPO — Galivivienda Fortalezas de Vélez",
+  "name": "Calculadora VPO · Galivivienda Fortalezas de Vélez",
   "description": "Calculadora interactiva para analizar el coste real de una VPO en régimen cooperativo. 188 viviendas en Vélez-Málaga.",
   "url": "https://vpo.jjalcantara.dev",
   "applicationCategory": "FinanceApplication",
@@ -154,6 +154,7 @@
   </div>
   <h1>Galivivienda <em>Fortalezas de Vélez</em></h1>
   <p class="hero-sub">Calculadora para analizar el coste real de una VPO cooperativa · 188 viviendas en Vélez-Málaga</p>
+  <p style="font-size:12px;color:var(--muted);margin-top:6px;">Herramienta en desarrollo continuo. Los datos se irán contrastando y mejorando.</p>
   <div style="margin-top:18px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
     <a href="https://emvipsa.es/procedimientos-de-adjucacion-de-viviendas-de-proteccion-oficial/" target="_blank" rel="noopener noreferrer" style="font-size:12px;color:var(--danger);text-decoration:none;font-weight:500;">⏳ Plazo solicitudes: 12 mayo – 2 junio · emvipsa.es ↗</a>
     <span style="font-size:12px;color:var(--muted);">Valle-Niza · Real Bajo · Aceituneros · Cerro del Águila</span>
@@ -169,7 +170,7 @@
     </div>
   </div>
   <div class="ctrl-group">
-    <span class="ctrl-label">Alquiler mensual base (€) <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--muted);font-size:9px;">— introduce el precio ya descontado</span></span>
+    <span class="ctrl-label">Alquiler mensual base (€)</span>
     <div class="ctrl-row">
       <input id="inp-rent" type="number" value="819.84" step="10" min="0" style="width:100px;" oninput="if(this.value<0)this.value=0; render()">
     </div>
@@ -222,34 +223,34 @@
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;">
       <div class="kpi" style="padding:14px;">
         <div class="kpi-label">Coste mensual total real</div>
-        <div class="kpi-value warn" id="kpi-monthly" style="font-size:20px;">—</div>
+        <div class="kpi-value warn" id="kpi-monthly" style="font-size:20px;">;</div>
         <div class="kpi-sub" id="kpi-monthly-sub">Alquiler + comunidad + IBI</div>
       </div>
       <div class="kpi" style="padding:14px;">
         <div class="kpi-label" id="kpi-buy-label">Precio compra año 20</div>
-        <div class="kpi-value ok" id="kpi-buy" style="font-size:20px;">—</div>
+        <div class="kpi-value ok" id="kpi-buy" style="font-size:20px;">;</div>
         <div class="kpi-sub" id="kpi-buy-sub">Tras descuento rentas y 39k</div>
         <div class="kpi-confirmed">✓ 39k se devuelven al comprar</div>
       </div>
       <div class="kpi" style="padding:14px;">
         <div class="kpi-label">Total desembolsado</div>
-        <div class="kpi-value danger" id="kpi-total" style="font-size:20px;">—</div>
+        <div class="kpi-value danger" id="kpi-total" style="font-size:20px;">;</div>
         <div class="kpi-sub">Aportaciones + alquiler + comunidad/IBI + compra</div>
       </div>
       <div class="kpi" style="padding:14px;">
         <div class="kpi-label" id="kpi-adj-label">Valor piso año 20</div>
-        <div class="kpi-value" id="kpi-adj" style="font-size:20px;">—</div>
+        <div class="kpi-value" id="kpi-adj" style="font-size:20px;">;</div>
         <div class="kpi-sub" id="kpi-adj-sub">Valor adjudicación con IPC</div>
       </div>
     </div>
     <div style="margin-top:10px;background:var(--bg3);border-radius:6px;padding:10px 14px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;">
       <span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);flex-shrink:0;" id="kpi-label">Escenario base</span>
       <div style="display:flex;flex-wrap:wrap;gap:12px;margin-left:auto;">
-        <span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);">Alquiler: <strong id="brk-rent" style="color:var(--text);">—</strong></span>
-        <span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);">IBI: <strong id="brk-ibi" style="color:var(--text);">—</strong></span>
-        <span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);" id="brk-com-wrap">Comunidad: <strong id="brk-com" style="color:var(--text);">—</strong></span>
+        <span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);">Alquiler: <strong id="brk-rent" style="color:var(--text);">;</strong></span>
+        <span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);">IBI: <strong id="brk-ibi" style="color:var(--text);">;</strong></span>
+        <span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);" id="brk-com-wrap">Comunidad: <strong id="brk-com" style="color:var(--text);">;</strong></span>
         <span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);">Aportaciones: <strong style="color:var(--text);">39.000€</strong> <span style="color:var(--ok);">(se recuperan)</span></span>
-        <span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);" id="brk-buy-wrap">Precio compra: <strong id="brk-buy" style="color:var(--text);">—</strong> · Notaría/ITP (~5%): <strong id="brk-notary" style="color:var(--text);">—</strong></span>
+        <span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);" id="brk-buy-wrap">Precio compra: <strong id="brk-buy" style="color:var(--text);">;</strong> · Notaría/ITP (~5%): <strong id="brk-notary" style="color:var(--text);">;</strong></span>
       </div>
     </div>
   </div>
@@ -259,15 +260,15 @@
 
   <!-- Confirmados por contrato -->
   <div class="confirmed-box">
-    <div class="confirmed-title">✓ Confirmado por contrato real — ya no son estimaciones</div>
+    <div class="confirmed-title">✓ Confirmado por contrato real: ya no son estimaciones</div>
     <div class="confirmed-items">
-      <div class="confirmed-item">Cada vivienda incluye plaza de garaje en sótano y trastero vinculados — inseparables de la adjudicación</div>
+      <div class="confirmed-item">Cada vivienda incluye plaza de garaje en sótano y trastero vinculados, inseparables de la adjudicación</div>
       <div class="confirmed-item">Las aportaciones de 39.000 € (25k entrada + 14k en obra/llaves) se devuelven al comprar y se descuentan del precio final</div>
       <div class="confirmed-item">Descuento mínimo garantizado: 50% sobre rentas pagadas (contrato arrendamiento, cláusula 16ª)</div>
       <div class="confirmed-item">Cocina equipada: vitrocerámica, horno, campana, frigorífico, lavadora y lavavajillas (inventario contrato)</div>
-      <div class="confirmed-item">Comunidad + IBI los pagas tú encima del alquiler (cláusula 5ª) — solo está confirmada la obligación, los importes exactos se fijan cuando se constituya la comunidad de propietarios</div>
+      <div class="confirmed-item">Comunidad + IBI los pagas tú encima del alquiler (cláusula 5ª): solo está confirmada la obligación, los importes exactos se fijan cuando se constituya la comunidad de propietarios</div>
       <div class="confirmed-item">Si renuncias después de firmar y no hay sustituto: pierdes los 25.000 € de entrada (cláusula penal)</div>
-      <div class="confirmed-item">Puedes ceder tu posición a otro socio de la cooperativa — consulta estatutos para condiciones exactas</div>
+      <div class="confirmed-item">Puedes ceder tu posición a otro socio de la cooperativa ; consulta estatutos para condiciones exactas</div>
       <div class="confirmed-item">Los causahabientes (herederos legales) pueden ejercer la opción de compra, siempre que cumplan los requisitos VPO vigentes en ese momento</div>
     </div>
   </div>
@@ -304,7 +305,7 @@
       <div class="risk-row">
         <div>
           <div class="risk-title">Porcentaje exacto de descuento sobre rentas <span class="tag tag-danger">CRÍTICO</span></div>
-          <div class="risk-desc">El contrato garantiza mínimo 50% pero no fija el definitivo. El folleto dice "aprox. 85%". Lo decide el Consejo Rector al año 20 según costes del préstamo promotor pendiente. La diferencia económica entre ambos extremos varía según la vivienda elegida — a mayor valor de adjudicación y mayor alquiler mensual, mayor es el impacto: usa la calculadora para ver el rango exacto con los valores del piso que te interese.</div>
+          <div class="risk-desc">El contrato garantiza mínimo 50% pero no fija el definitivo. El folleto dice "aprox. 85%". Lo decide el Consejo Rector al año 20 según costes del préstamo promotor pendiente. La diferencia económica entre ambos extremos varía según la vivienda elegida ; a mayor valor de adjudicación y mayor alquiler mensual, mayor es el impacto: usa la calculadora para ver el rango exacto con los valores del piso que te interese.</div>
         </div>
         <div><span class="tag tag-danger">Alto</span></div>
         <div class="risk-action">No puedes forzarlo hoy. Planifica con el 50% para no llevarte sorpresas. Si aplican más, mejor.</div>
@@ -382,7 +383,7 @@
           <div style="font-family:'Inter',sans-serif;font-size:16px;font-weight:300;color:var(--text);">Llaves</div>
         </div>
         <div style="background:var(--bg2);padding:14px 18px;">
-          <div style="font-size:13px;font-weight:500;color:var(--text);margin-bottom:4px;">Entras a vivir — empieza el alquiler</div>
+          <div style="font-size:13px;font-weight:500;color:var(--text);margin-bottom:4px;">Entras a vivir, empieza el alquiler</div>
           <div style="font-size:12px;color:var(--muted);">Pagas alquiler + comunidad + IBI. El piso es de la cooperativa. No puedes vender ni subarrendar. Puedes ceder tu posición a otro socio.</div>
         </div>
       </div>
@@ -417,30 +418,30 @@
           <div class="riesgos-2049-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
             <div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:12px 14px;">
               <div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:4px;">Ganas demasiado en 2049</div>
-              <div style="font-size:11px;color:var(--muted);line-height:1.5;">Si superas el límite de ingresos VPO vigente en ese momento, no puedes comprar al precio protegido. <strong style="color:var(--text);">Pierdes la opción de compra</strong> — no el alquiler pagado (era tu vivienda) ni las aportaciones cooperativas (te las devuelven). Lo que pierdes es el descuento sobre el precio de mercado, que en 2049 podría ser 100.000–200.000€ de diferencia.</div>
+              <div style="font-size:11px;color:var(--muted);line-height:1.5;">Si superas el límite de ingresos VPO vigente en ese momento, no puedes comprar al precio protegido. <strong style="color:var(--text);">Pierdes la opción de compra</strong>, no el alquiler pagado (era tu vivienda) ni las aportaciones cooperativas (te las devuelven). Lo que pierdes es el descuento sobre el precio de mercado, que en 2049 podría ser 100.000–200.000€ de diferencia.</div>
               <div style="font-size:10px;color:var(--warn);margin-top:6px;">Nota: durante los 20 años de alquiler NO te comprueban los ingresos. Solo en 2026 y en 2049.</div>
             </div>
             <div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:12px 14px;">
               <div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:4px;">Tienes otro piso en 2049</div>
               <div style="font-size:11px;color:var(--muted);line-height:1.5;">Ser titular de otra vivienda puede bloquearte la compra VPO. La norma general exige no poseer otra vivienda en España. Excepción posible si demuestras que no satisface tus necesidades actuales. VPO en propiedad → descalificación directa. Vivienda libre → valoración caso por caso por la Junta.</div>
-              <div style="font-size:10px;color:var(--warn);margin-top:6px;">La legislación habrá cambiado varias veces en 23 años — imposible saber hoy qué norma aplicará.</div>
+              <div style="font-size:10px;color:var(--warn);margin-top:6px;">La legislación habrá cambiado varias veces en 23 años ; imposible saber hoy qué norma aplicará.</div>
             </div>
           </div>
 
           <div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:12px 14px;">
-            <div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:4px;">Si no puedes comprar — ¿qué pasa con tu dinero?</div>
+            <div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:4px;">Si no puedes comprar, ¿qué pasa con tu dinero?</div>
             <div class="riesgos-2049-money" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:8px;">
               <div>
                 <div style="font-size:11px;font-weight:600;color:var(--ok);">Recuperas</div>
-                <div style="font-size:11px;color:var(--muted);">Los 39.000€ en aportaciones cooperativas — son tu participación en el capital social y deben devolverse</div>
+                <div style="font-size:11px;color:var(--muted);">Los 39.000€ en aportaciones cooperativas: son tu participación en el capital social y deben devolverse</div>
               </div>
               <div>
                 <div style="font-size:11px;font-weight:600;color:var(--muted);">Gastado en vivienda</div>
-                <div style="font-size:11px;color:var(--muted);">El alquiler de 20 años — igual que cualquier inquilino. A cambio viviste allí. No es una pérdida diferente a alquilar en el mercado</div>
+                <div style="font-size:11px;color:var(--muted);">El alquiler de 20 años, igual que cualquier inquilino. A cambio viviste allí. No es una pérdida diferente a alquilar en el mercado</div>
               </div>
               <div>
                 <div style="font-size:11px;font-weight:600;color:var(--danger);">Pierdes</div>
-                <div style="font-size:11px;color:var(--muted);">La opción de comprar por debajo de mercado — ese era el beneficio económico real de la operación</div>
+                <div style="font-size:11px;color:var(--muted);">La opción de comprar por debajo de mercado ; ese era el beneficio económico real de la operación</div>
               </div>
             </div>
           </div>
@@ -456,12 +457,12 @@
         </div>
         <div style="background:var(--bg2);padding:14px 18px;">
           <div style="font-size:13px;font-weight:500;color:var(--accent);margin-bottom:4px;">El piso es 100% tuyo y libre</div>
-          <div style="font-size:12px;color:var(--muted);">Caduca la calificación VPO. Puedes vender al precio que quieras, alquilar libremente, reformar sin restricciones. Sin derecho de tanteo, sin precio regulado. Es un activo completamente libre. Si compraste en el año 20, llevas 10 años como propietario con restricciones VPO — a partir de 2059 desaparecen todas.</div>
+          <div style="font-size:12px;color:var(--muted);">Caduca la calificación VPO. Puedes vender al precio que quieras, alquilar libremente, reformar sin restricciones. Sin derecho de tanteo, sin precio regulado. Es un activo completamente libre. Si compraste en el año 20, llevas 10 años como propietario con restricciones VPO ; a partir de 2059 desaparecen todas.</div>
         </div>
       </div>
 
       <div style="background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:14px 18px;font-size:12px;color:var(--muted);">
-        Durante el periodo de alquiler el subarrendamiento está expresamente prohibido por contrato (cláusula 8ª). Una vez ejercida la opción de compra, la vivienda sigue sujeta a la calificación VPO durante 30 años desde la calificación definitiva — en ese periodo tampoco se puede alquilar libremente. La Delegación Territorial de la Junta de Andalucía puede autorizar excepciones, pero no es automático.
+        Durante el periodo de alquiler el subarrendamiento está expresamente prohibido por contrato (cláusula 8ª). Una vez ejercida la opción de compra, la vivienda sigue sujeta a la calificación VPO durante 30 años desde la calificación definitiva ; en ese periodo tampoco se puede alquilar libremente. La Delegación Territorial de la Junta de Andalucía puede autorizar excepciones, pero no es automático.
       </div>
 
     </div>
@@ -474,42 +475,42 @@
       <div class="sum-col">
         <h3 class="green">A favor</h3>
         <ul class="sum-list">
-          <li>Cada vivienda incluye plaza de garaje en sótano y trastero vinculados — son parte inseparable de la adjudicación y del contrato</li>
-          <li>Las aportaciones de 39.000 € al capital social (25k entrada + 14k en obra y llaves) se recuperan al comprar y se aplican al precio final — no son un coste perdido</li>
+          <li>Cada vivienda incluye plaza de garaje en sótano y trastero vinculados: son parte inseparable de la adjudicación y del contrato</li>
+          <li>Las aportaciones de 39.000 € al capital social (25k entrada + 14k en obra y llaves) se recuperan al comprar y se aplican al precio final ; no son un coste perdido</li>
           <li>La cocina viene equipada: vitrocerámica, horno, campana, frigorífico, lavadora y lavavajillas incluidos en contrato</li>
-          <li>Sistema de climatización frío/calor por conductos y aerotermia A+ incluidos en la construcción — no hay que comprar aparatos</li>
+          <li>Sistema de climatización frío/calor por conductos y aerotermia A+ incluidos en la construcción ; no hay que comprar aparatos</li>
           <li>Galivivienda + CONCOVI es una estructura cooperativa sin ánimo de lucro, afiliada a la confederación nacional, con gestión profesional homologada</li>
           <li>El precio de compra al finalizar el alquiler puede ser significativamente inferior al valor de mercado, dependiendo del descuento aplicado sobre rentas</li>
           <li>Los causahabientes (herederos) del socio pueden ejercer la opción de compra al finalizar el periodo de alquiler</li>
-          <li>Promoción en 4 parcelas en Vélez-Málaga y Torre del Mar — 188 viviendas con distintas ubicaciones y tipologías</li>
+          <li>Promoción en 4 parcelas en Vélez-Málaga y Torre del Mar · 188 viviendas con distintas ubicaciones y tipologías</li>
           <li>Calificación energética A en todos los edificios</li>
         </ul>
       </div>
       <div class="sum-col">
         <h3 class="red">Riesgos a considerar</h3>
         <ul class="sum-list">
-          <li>El porcentaje de descuento sobre rentas no está fijado contractualmente — el contrato garantiza mínimo 50% pero el folleto anuncia "aprox. 85%". Lo decide el Consejo Rector al finalizar el periodo de alquiler</li>
+          <li>El porcentaje de descuento sobre rentas no está fijado contractualmente ; el contrato garantiza mínimo 50% pero el folleto anuncia "aprox. 85%". Lo decide el Consejo Rector al finalizar el periodo de alquiler</li>
           <li>Comunidad e IBI se pagan encima del alquiler (confirmado en cláusula 5ª del contrato) y no están cuantificados en la documentación pública. Estima 80-130 €/mes adicionales según las instalaciones de cada edificio</li>
-          <li>Si se firma el contrato de participación y se renuncia sin que otro socio tome la posición, se pierden los 25.000 € desembolsados — cláusula penal explícita</li>
+          <li>Si se firma el contrato de participación y se renuncia sin que otro socio tome la posición, se pierden los 25.000 € desembolsados (cláusula penal explícita)</li>
           <li>La vivienda no es un activo libre hasta ~30 años después de la calificación definitiva. Hasta entonces, precio de venta regulado y derecho de tanteo de la Junta de Andalucía</li>
           <li>El préstamo promotor pendiente en el momento de ejercer la opción de compra influye directamente en el porcentaje de descuento que aplicará el Consejo Rector</li>
-          <li>Los proyectos están en fase de redacción — licencias de obra y calificación provisional pendientes. Los planos y superficies son orientativos y pueden variar</li>
+          <li>Los proyectos están en fase de redacción ; licencias de obra y calificación provisional pendientes. Los planos y superficies son orientativos y pueden variar</li>
         </ul>
       </div>
     </div>
     <div style="border:1px solid rgba(220,38,38,0.25);border-radius:10px;background:rgba(220,38,38,0.04);padding:16px 20px;margin-top:10px;">
-      <div style="font-size:11px;font-weight:600;color:var(--danger);letter-spacing:0.05em;margin-bottom:10px;">RIESGO ANTES DE PAGAR — PARALIZACIÓN DE OBRA</div>
+      <div style="font-size:11px;font-weight:600;color:var(--danger);letter-spacing:0.05em;margin-bottom:10px;">RIESGO ANTES DE PAGAR: PARALIZACIÓN DE OBRA</div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;" class="riesgos-2049-grid">
         <div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:12px 14px;">
           <div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:4px;">Si la cooperativa entra en insolvencia</div>
-          <div style="font-size:11px;color:var(--muted);line-height:1.6;">El contrato solo obliga a devolver las aportaciones nominales — sin intereses, sin compensación por inflación. Si metes 39.000 € y la obra se paraliza a los 3 años, recuperas 39.000 € pero habrás perdido el equivalente a ~3 años de IPC acumulado sobre ese capital.</div>
+          <div style="font-size:11px;color:var(--muted);line-height:1.6;">El contrato solo obliga a devolver las aportaciones nominales, sin intereses, sin compensación por inflación. Si metes 39.000 € y la obra se paraliza a los 3 años, recuperas 39.000 € pero habrás perdido el equivalente a ~3 años de IPC acumulado sobre ese capital.</div>
         </div>
         <div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:12px 14px;">
           <div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:6px;">Qué exigir antes de pagar</div>
           <div style="display:flex;flex-direction:column;gap:5px;">
-            <div style="font-size:11px;color:var(--muted);display:flex;gap:8px;"><span style="color:var(--danger);font-weight:600;">1</span><span>Aval bancario o póliza de seguro que garantiza tus aportaciones — obligatorio por Ley 57/1968 y LOE. Sin este documento no tienes garantía legal.</span></div>
-            <div style="font-size:11px;color:var(--muted);display:flex;gap:8px;"><span style="color:var(--danger);font-weight:600;">2</span><span>Confirmación de que el préstamo promotor está concedido o en proceso avanzado — sin financiación bancaria no hay obra.</span></div>
-            <div style="font-size:11px;color:var(--muted);display:flex;gap:8px;"><span style="color:var(--danger);font-weight:600;">3</span><span>Plan de viabilidad económica aprobado en Asamblea General — el contrato lo menciona pero no lo adjunta.</span></div>
+            <div style="font-size:11px;color:var(--muted);display:flex;gap:8px;"><span style="color:var(--danger);font-weight:600;">1</span><span>Aval bancario o póliza de seguro que garantiza tus aportaciones, obligatorio por Ley 57/1968 y LOE. Sin este documento no tienes garantía legal.</span></div>
+            <div style="font-size:11px;color:var(--muted);display:flex;gap:8px;"><span style="color:var(--danger);font-weight:600;">2</span><span>Confirmación de que el préstamo promotor está concedido o en proceso avanzado ; sin financiación bancaria no hay obra.</span></div>
+            <div style="font-size:11px;color:var(--muted);display:flex;gap:8px;"><span style="color:var(--danger);font-weight:600;">3</span><span>Plan de viabilidad económica aprobado en Asamblea General ; el contrato lo menciona pero no lo adjunta.</span></div>
           </div>
         </div>
       </div>
@@ -524,7 +525,7 @@
     <div class="footer-note" style="margin-top:8px;">
       <strong>Contacto Galivivienda:</strong> <strong>917 818 664</strong> · <strong>info@galivivienda.com</strong> · <strong>www.galivivienda.com</strong>
       <br style="margin-bottom:6px;">
-      <strong>Plazo solicitudes: 12 mayo – 2 junio</strong> — Descarga formularios y bases reguladoras por parcela en <a href="https://emvipsa.es/procedimientos-de-adjucacion-de-viviendas-de-proteccion-oficial/" target="_blank" rel="noopener noreferrer" style="color:var(--accent);text-decoration:underline;text-underline-offset:3px;">emvipsa.es ↗</a> · También en <strong>cooperopen.org/velez-malaga</strong>
+      <strong>Plazo solicitudes: 12 mayo – 2 junio</strong> · Descarga formularios y bases reguladoras por parcela en <a href="https://emvipsa.es/procedimientos-de-adjucacion-de-viviendas-de-proteccion-oficial/" target="_blank" rel="noopener noreferrer" style="color:var(--accent);text-decoration:underline;text-underline-offset:3px;">emvipsa.es ↗</a> · También en <strong>cooperopen.org/velez-malaga</strong>
     </div>
   </div>
 
@@ -600,7 +601,7 @@ function render() {
   document.getElementById('kpi-adj').textContent = fmt(adjFinal);
   document.getElementById('kpi-adj-sub').textContent = ipc > 0
     ? 'Subiendo ' + ipc + '% anual durante ' + (years||20) + ' años: ' + fmt(adjBase) + ' → ' + fmt(adjFinal) + ' (+' + Math.round((adjFinal/adjBase-1)*100) + '%)'
-    : 'IPC 0% — sin variación respecto al valor base 2025. Selecciona 2% o 3% para ver el efecto.';
+    : 'IPC 0%, sin variación respecto al valor base 2025. Selecciona 2% o 3% para ver el efecto.';
   // Desglose
   document.getElementById('brk-rent').textContent = fmt(totalRent);
   document.getElementById('brk-ibi').textContent = fmt(ibi);
@@ -618,19 +619,19 @@ function render() {
   const stateMap = { ok: 'Confirmado', info: 'Estimado', warn: 'Sin confirmar', danger: 'Incierto' };
   const rentLabel = 'Alquiler ' + (years > 0 ? years : '?') + ' años' + (rentIpc && ipc > 0 ? ' (sube IPC ' + ipc + '%)' : ipc > 0 ? ' (fijo, no sube)' : ' (sin IPC)');
   const rows = [
-    ['Aportación entrada cooperativa', 'Día 1 (tras sorteo)', 25000, 'ok', 'Contrato participación social — cláusula 4ª'],
-    ['Aportación adicional — cuotas de 400€/mes durante la obra + 9.000€ en entrega de llaves', 'Tras licencia obras', 14000, 'ok', 'Contrato participación social — cláusula 4ª · Tramos: cuotas mensuales de 400€ durante la construcción + 9.000€ a la entrega de llaves · Total: 14.000€'],
+    ['Aportación entrada cooperativa', 'Día 1 (tras sorteo)', 25000, 'ok', 'Contrato participación social, cláusula 4ª'],
+    ['Aportación adicional ; cuotas de 400€/mes durante la obra + 9.000€ en entrega de llaves', 'Tras licencia obras', 14000, 'ok', 'Contrato participación social, cláusula 4ª · Tramos: cuotas mensuales de 400€ durante la construcción + 9.000€ a la entrega de llaves · Total: 14.000€'],
     [rentLabel, 'Años 1–' + (years || 20), Math.round(totalRent), 'info', rentInfo],
-    ['IBI (estimado ~15€/mes, sigue tras la compra)', 'Años 1–' + (years||20) + ' y más allá', Math.round(ibi), 'warn', '⚠ Estimación solo para el periodo de alquiler · El IBI no desaparece al comprar — se paga de por vida · Importe real depende del valor catastral, revisable por el ayuntamiento · Posible bonificación 50% en VPO'],
+    ['IBI (estimado ~15€/mes, sigue tras la compra)', 'Años 1–' + (years||20) + ' y más allá', Math.round(ibi), 'warn', '⚠ Estimación solo para el periodo de alquiler · El IBI no desaparece al comprar ; se paga de por vida · Importe real depende del valor catastral, revisable por el ayuntamiento · Posible bonificación 50% en VPO'],
     ...(com > 0
       ? [['Comunidad ' + (years || 20) + ' años (' + com + '€/mes)', 'Años 1–' + (years || 20), totalCom, 'warn', 'Confirmado por contrato (cláusula 5ª) · importe exacto pendiente']]
-      : [['Comunidad (sin cuantificar, sigue tras la compra)', 'Años 1–' + (years||20) + ' y más allá', 'Sin confirmar', 'danger', '⚠ No se sabe el importe hasta que se constituya la comunidad de propietarios · Estima 80-130€/mes según instalaciones (piscina, ascensor, zonas comunes) · No desaparece al comprar — se paga de por vida']]),
+      : [['Comunidad (sin cuantificar, sigue tras la compra)', 'Años 1–' + (years||20) + ' y más allá', 'Sin confirmar', 'danger', '⚠ No se sabe el importe hasta que se constituya la comunidad de propietarios · Estima 80-130€/mes según instalaciones (piscina, ascensor, zonas comunes) · No desaparece al comprar ; se paga de por vida']]),
     ...(years > 0 ? [
-      ['Precio compra año ' + years + ' — neto (descuento ' + pct + '% sobre rentas)', 'Año ' + years, Math.round(buyNet), 'info',
+      ['Precio compra año ' + years + ', neto (descuento ' + pct + '% sobre rentas)', 'Año ' + years, Math.round(buyNet), 'info',
         'Valor adjudicación ' + fmt(adjFinal) + ' – descuento ' + pct + '% rentas (' + fmt(Math.round(totalRent * (pct/100))) + ') = bruto ' + fmt(buyGross) + ' – 39k aportaciones devueltas = neto ' + fmt(buyNet) + ' · El % final lo fija el Consejo Rector'],
       ['Gastos compraventa año ' + years + ' (~5%)', 'Año ' + years, Math.round(notary), 'warn', 'Notaría, registro, ITP · a cargo del comprador (cláusula 16ª)'],
     ] : [
-      ['Opción de compra', '—', 'No ejercida', 'info', 'Selecciona años para calcular el precio de compra'],
+      ['Opción de compra', '–', 'No ejercida', 'info', 'Selecciona años para calcular el precio de compra'],
     ]),
   ];
 
@@ -667,7 +668,7 @@ render();
 <div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#fff;border-top:1px solid rgba(0,0,0,0.12);padding:14px 24px;box-shadow:0 -4px 24px rgba(0,0,0,0.07);">
   <div style="max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
     <p style="font-size:12px;color:#78716c;line-height:1.6;margin:0;">
-      Esta web usa <strong style="color:#111110;">Vercel</strong> (alojamiento) y <strong style="color:#111110;">Google Fonts</strong> (tipografías) — ambos pueden registrar tu IP. No hay analíticas ni tracking.
+      Esta web usa <strong style="color:#111110;">Vercel</strong> (alojamiento) y <strong style="color:#111110;">Google Fonts</strong> (tipografías) ; ambos pueden registrar tu IP. No hay analíticas ni tracking.
       <a href="privacy.html" style="color:#111110;text-underline-offset:2px;">Política de privacidad ↗</a>
     </p>
     <button onclick="document.getElementById('cookie-banner').style.display='none';localStorage.setItem('cookie-ok','1');" style="background:#111110;color:#fff;border:none;padding:8px 18px;border-radius:4px;font-size:12px;font-weight:500;cursor:pointer;white-space:nowrap;flex-shrink:0;">Entendido</button>
