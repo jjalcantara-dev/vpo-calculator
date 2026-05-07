@@ -162,6 +162,8 @@
     .controls-bar { padding: 10px 16px; position: static; box-shadow: none; border-bottom: 1px solid var(--border); }
     .ctrl-group { flex: 1 1 140px; border-right: none; padding-right: 0; margin-right: 0; }
     .site-footer { padding: 20px 16px; flex-direction: column; align-items: flex-start; }
+    .footer-meta { text-align: left !important; border-top: 1px solid var(--border); padding-top: 14px; width: 100%; }
+    .footer-site-title { display: none; }
     .risk-row { grid-template-columns: 1fr; }
     .risk-action { margin-top: 2px; }
     .summary-box { grid-template-columns: 1fr; gap: 20px; }
@@ -862,8 +864,8 @@ render();
       <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);margin-top:3px;letter-spacing:0.05em;">jjalcantara.dev ↗</div>
     </div>
   </a>
-  <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);text-align:right;line-height:2;">
-    <div>Calculadora VPO · Galivivienda Fortalezas de Vélez · Vélez-Málaga</div>
+  <div class="footer-meta" style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);text-align:right;line-height:2;">
+    <div class="footer-site-title">Calculadora VPO · Galivivienda Fortalezas de Vélez · Vélez-Málaga</div>
     <div style="opacity:0.55;">Análisis basado en documentación pública · No constituye asesoramiento financiero ni legal</div>
     <div style="margin-top:4px;"><a href="/privacy" style="color:var(--muted);text-decoration:underline;text-underline-offset:2px;font-size:10px;opacity:0.7;">Política de privacidad</a></div>
   </div>
