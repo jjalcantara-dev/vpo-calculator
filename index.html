@@ -34,7 +34,7 @@
   :root {
     --bg: #fff; --bg2: #fafaf9; --bg3: #f2f1ef;
     --border: rgba(0,0,0,0.07); --border2: rgba(0,0,0,0.16);
-    --text: #111110; --muted: #78716c; --muted2: #a8a29e;
+    --text: #111110; --muted: #78716c; --muted2: #757270;
     --accent: #111110;
     --danger: #dc2626; --warn: #b45309; --ok: #16a34a; --info: #2563eb;
     --r: 8px; --r-sm: 5px;
@@ -61,6 +61,7 @@
   .controls-bar { background: rgba(255,255,255,0.97); border-bottom: 1px solid var(--border); padding: 10px 40px; display: flex; gap: 0; flex-wrap: wrap; align-items: center; position: sticky; top: 0; z-index: 100; backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: 0 1px 0 var(--border), 0 4px 20px rgba(0,0,0,0.04); }
   .ctrl-group { display: flex; flex-direction: column; gap: 4px; padding: 4px 20px 4px 0; margin-right: 20px; border-right: 1px solid var(--border); }
   .ctrl-group:last-child { border-right: none; padding-right: 0; margin-right: 0; }
+  .ctrl-group.sep { border-right: 1px solid var(--border2); padding-right: 28px; margin-right: 28px; }
   .ctrl-label { font-size: 9px; color: var(--muted2); letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; }
   .ctrl-hint { font-size: 9px; color: var(--muted2); margin-top: 2px; line-height: 1.35; }
   .ctrl-row { display: flex; gap: 3px; }
@@ -119,7 +120,7 @@
   /* ── Confirmed box ── */
   .confirmed-box { background: #f0fdf4; border: 1px solid rgba(22,163,74,0.18); border-radius: var(--r); padding: 18px 22px; margin-bottom: 28px; }
   .confirmed-title { font-size: 9px; color: var(--ok); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 14px; font-weight: 700; }
-  .confirmed-items { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px 18px; }
+  .confirmed-items { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px 18px; }
   .confirmed-item { font-size: 12px; color: var(--text); display: flex; gap: 9px; align-items: flex-start; line-height: 1.5; }
   .confirmed-item::before { content: '✓'; color: var(--ok); flex-shrink: 0; font-weight: 700; font-size: 13px; margin-top: 1px; }
 
@@ -161,6 +162,8 @@
     .hero, .main { padding: 24px 16px; }
     .controls-bar { padding: 10px 16px; position: static; box-shadow: none; border-bottom: 1px solid var(--border); }
     .ctrl-group { flex: 1 1 140px; border-right: none; padding-right: 0; margin-right: 0; }
+    .ctrl-group.sep { border-right: none; padding-right: 0; margin-right: 0; }
+    .confirmed-items { grid-template-columns: 1fr; }
     .site-footer { padding: 20px 16px; flex-direction: column; align-items: flex-start; }
     .footer-meta { text-align: left !important; border-top: 1px solid var(--border); padding-top: 14px; width: 100%; }
     .footer-site-title { display: none; }
@@ -301,14 +304,14 @@
 <main>
 <div class="controls-bar">
   <div class="ctrl-group">
-    <span class="ctrl-label">Valor piso 2025 (€)</span>
+    <label class="ctrl-label" for="inp-adj">Valor piso 2025 (€)</label>
     <div class="ctrl-row">
       <input id="inp-adj" type="text" value="196.760" style="width:120px;" oninput="fmtInput(this)" onblur="fmtInput(this)">
     </div>
     <span class="ctrl-hint">El precio oficial de venta del piso en 2025. Cámbialo si tu vivienda tiene un valor distinto.</span>
   </div>
-  <div class="ctrl-group">
-    <span class="ctrl-label">Alquiler mensual base (€)</span>
+  <div class="ctrl-group sep">
+    <label class="ctrl-label" for="inp-rent">Alquiler mensual base (€)</label>
     <div class="ctrl-row">
       <input id="inp-rent" type="number" value="819.84" step="10" min="0" style="width:100px;" oninput="if(this.value<0)this.value=0; render()">
     </div>
@@ -317,46 +320,46 @@
   <div class="ctrl-group">
     <span class="ctrl-label">IPC anual estimado</span>
     <div class="ctrl-row">
-      <button class="btn-opt" onclick="setParam('ipc',0,this)">0%</button>
-      <button class="btn-opt active" onclick="setParam('ipc',2,this)">2%</button>
-      <button class="btn-opt" onclick="setParam('ipc',3,this)">3%</button>
+      <button class="btn-opt" aria-pressed="false" onclick="setParam('ipc',0,this)">0%</button>
+      <button class="btn-opt active" aria-pressed="true" onclick="setParam('ipc',2,this)">2%</button>
+      <button class="btn-opt" aria-pressed="false" onclick="setParam('ipc',3,this)">3%</button>
     </div>
     <span class="ctrl-hint">La inflación que prevés. Con 2%, el alquiler y el valor del piso crecen un poco cada año.</span>
   </div>
   <div class="ctrl-group">
     <span class="ctrl-label">Alquiler sube con IPC</span>
     <div class="ctrl-row">
-      <button class="btn-opt active" onclick="setParam('rentIpc',true,this)">Sí</button>
-      <button class="btn-opt" onclick="setParam('rentIpc',false,this)">No (fijo)</button>
+      <button class="btn-opt active" aria-pressed="true" onclick="setParam('rentIpc',true,this)">Sí</button>
+      <button class="btn-opt" aria-pressed="false" onclick="setParam('rentIpc',false,this)">No (fijo)</button>
     </div>
     <span class="ctrl-hint">Si el alquiler sube cada año con la inflación o se queda fijo durante todo el periodo.</span>
   </div>
   <div class="ctrl-group">
     <span class="ctrl-label">Años en alquiler antes de comprar</span>
     <div class="ctrl-row">
-      <button class="btn-opt active" onclick="setParam('years',20,this)">20 <span style="font-size:9px;opacity:0.6">(mín)</span></button>
-      <button class="btn-opt" onclick="setParam('years',25,this)">25</button>
-      <button class="btn-opt" onclick="setParam('years',30,this)">30</button>
-      <button class="btn-opt" onclick="setParam('years',0,this)">Solo alquiler</button>
+      <button class="btn-opt active" aria-pressed="true" onclick="setParam('years',20,this)">20 <span style="font-size:9px;opacity:0.6">(mín)</span></button>
+      <button class="btn-opt" aria-pressed="false" onclick="setParam('years',25,this)">25</button>
+      <button class="btn-opt" aria-pressed="false" onclick="setParam('years',30,this)">30</button>
+      <button class="btn-opt" aria-pressed="false" onclick="setParam('years',0,this)">Solo alquiler</button>
     </div>
     <span class="ctrl-hint">El contrato obliga a vivir de alquiler al menos 20 años antes de poder comprar. Simula qué pasa si esperas más.</span>
   </div>
   <div class="ctrl-group">
     <span class="ctrl-label">Descuento en la compra (sobre rentas)</span>
     <div class="ctrl-row">
-      <button class="btn-opt" onclick="setParam('pct',85,this)">85%</button>
-      <button class="btn-opt" onclick="setParam('pct',75,this)">75%</button>
-      <button class="btn-opt" onclick="setParam('pct',65,this)">65%</button>
-      <button class="btn-opt active" onclick="setParam('pct',50,this)">50% <span style="font-size:9px;opacity:0.6">(mín)</span></button>
+      <button class="btn-opt" aria-pressed="false" onclick="setParam('pct',85,this)">85%</button>
+      <button class="btn-opt" aria-pressed="false" onclick="setParam('pct',75,this)">75%</button>
+      <button class="btn-opt" aria-pressed="false" onclick="setParam('pct',65,this)">65%</button>
+      <button class="btn-opt active" aria-pressed="true" onclick="setParam('pct',50,this)">50% <span style="font-size:9px;opacity:0.6">(mín)</span></button>
     </div>
     <span class="ctrl-hint">Al comprar, descuentan parte del alquiler que ya pagaste. El contrato garantiza mínimo el 50%; la cooperativa anuncia ~85%.</span>
   </div>
   <div class="ctrl-group">
     <span class="ctrl-label">Comunidad + IBI mensual</span>
     <div class="ctrl-row">
-      <button class="btn-opt active" onclick="setParam('com',0,this)">Sin estimar</button>
-      <button class="btn-opt" onclick="setParam('com',90,this)">90 €/mes</button>
-      <button class="btn-opt" onclick="setParam('com',130,this)">130 €/mes</button>
+      <button class="btn-opt active" aria-pressed="true" onclick="setParam('com',0,this)">Sin estimar</button>
+      <button class="btn-opt" aria-pressed="false" onclick="setParam('com',90,this)">90 €/mes</button>
+      <button class="btn-opt" aria-pressed="false" onclick="setParam('com',130,this)">130 €/mes</button>
     </div>
     <span class="ctrl-hint">Gastos que pagas tú además del alquiler: cuota de la comunidad de vecinos e IBI (impuesto municipal del piso).</span>
   </div>
@@ -365,7 +368,7 @@
 <div class="kpi-band" style="background:var(--bg2);border-bottom:1px solid var(--border);padding:16px 40px;">
   <div style="max-width:1100px;margin:0 auto;">
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;">
-      <div class="kpi" style="padding:14px;cursor:pointer;user-select:none;" onclick="toggleRentChart()">
+      <div class="kpi" style="padding:14px;cursor:pointer;user-select:none;" onclick="toggleRentChart()" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleRentChart();}" aria-expanded="false" id="kpi-rent-btn">
         <div class="kpi-label">Precio alquiler mensual</div>
         <div style="margin-top:2px;">
           <span class="kpi-value warn" id="kpi-rent-y1" style="font-size:20px;display:block;"></span>
@@ -560,10 +563,10 @@
 
       <!-- Bloque riesgos 2049 -->
       <div style="border:1px solid rgba(180,83,9,0.3);border-radius:10px;background:rgba(180,83,9,0.04);padding:16px 20px;">
-        <div style="display:flex;align-items:center;justify-content:space-between;cursor:pointer;gap:12px;" onclick="toggleBlock('bloque-2049','toggle-2049-lbl')">
+        <button id="toggle-2049-btn" aria-expanded="false" aria-controls="bloque-2049" onclick="toggleBlock('bloque-2049','toggle-2049-lbl',this)" style="display:flex;align-items:center;justify-content:space-between;cursor:pointer;gap:12px;width:100%;background:none;border:none;padding:0;text-align:left;font-family:inherit;">
           <div style="font-size:12px;font-weight:600;color:var(--warn);letter-spacing:0.03em;">POSIBLES PROBLEMAS EN ~2049 AL EJERCER LA OPCIÓN</div>
           <span id="toggle-2049-lbl" style="font-size:11px;color:var(--warn);font-family:'DM Mono',monospace;white-space:nowrap;flex-shrink:0;">↓ ver detalle</span>
-        </div>
+        </button>
         <div id="bloque-2049" style="display:none;margin-top:12px;display:none;"><div style="display:grid;gap:8px;">
 
           <div class="riesgos-2049-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
@@ -688,8 +691,12 @@ const params = { ipc: 2, pct: 50, com: 0, rentIpc: true, years: 20 };
 
 function setParam(k, v, el) {
   params[k] = v;
-  el.closest('.ctrl-row').querySelectorAll('.btn-opt').forEach(b => b.classList.remove('active'));
+  el.closest('.ctrl-row').querySelectorAll('.btn-opt').forEach(function(b) {
+    b.classList.remove('active');
+    b.setAttribute('aria-pressed', 'false');
+  });
   el.classList.add('active');
+  el.setAttribute('aria-pressed', 'true');
   render();
 }
 
@@ -727,28 +734,33 @@ function calcBuy(ipc, pct, rentIpc, years) {
   return { adjFinal, totalRent, buyGross, buyNet, rentBase, rentLastYear };
 }
 
-function toggleBlock(id, lblId) {
+function toggleBlock(id, lblId, btn) {
   var el = document.getElementById(id);
   var lbl = document.getElementById(lblId);
   if (el.style.display === 'none' || el.style.display === '') {
     el.style.display = 'block';
     if (lbl) lbl.textContent = '↑ ocultar';
+    if (btn) btn.setAttribute('aria-expanded', 'true');
   } else {
     el.style.display = 'none';
     if (lbl) lbl.textContent = '↓ ver detalle';
+    if (btn) btn.setAttribute('aria-expanded', 'false');
   }
 }
 
 function toggleRentChart() {
   const panel = document.getElementById('rent-chart-panel');
   const label = document.getElementById('kpi-chart-toggle-label');
+  const btn = document.getElementById('kpi-rent-btn');
   if (panel.style.display === 'none') {
     panel.style.display = 'block';
     label.textContent = '↑ ocultar';
+    if (btn) btn.setAttribute('aria-expanded', 'true');
     drawRentChart();
   } else {
     panel.style.display = 'none';
     label.textContent = '↓ ver evolución';
+    if (btn) btn.setAttribute('aria-expanded', 'false');
   }
 }
 
@@ -926,8 +938,8 @@ render();
   </div>
 </div>
 <div id="hint-sheet-overlay" onclick="closeHintSheet()"></div>
-<div id="hint-sheet">
-  <button id="hint-sheet-close" onclick="closeHintSheet()">×</button>
+<div id="hint-sheet" role="dialog" aria-modal="true" aria-labelledby="hint-sheet-title">
+  <button id="hint-sheet-close" onclick="closeHintSheet()" aria-label="Cerrar">×</button>
   <div id="hint-sheet-title"></div>
   <div id="hint-sheet-body"></div>
 </div>
@@ -937,20 +949,41 @@ render();
   }
 </script>
 <script>
+  var _hintLastFocused = null;
   function closeHintSheet() {
     document.getElementById('hint-sheet').style.display = 'none';
     document.getElementById('hint-sheet-overlay').style.display = 'none';
+    if (_hintLastFocused) { _hintLastFocused.focus(); _hintLastFocused = null; }
   }
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && document.getElementById('hint-sheet').style.display === 'block') {
+      closeHintSheet();
+    }
+    if (e.key === 'Tab' && document.getElementById('hint-sheet').style.display === 'block') {
+      var sheet = document.getElementById('hint-sheet');
+      var focusable = sheet.querySelectorAll('button, [href], input, [tabindex]:not([tabindex="-1"])');
+      if (!focusable.length) return;
+      var first = focusable[0], last = focusable[focusable.length - 1];
+      if (e.shiftKey) {
+        if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+      } else {
+        if (document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+    }
+  });
   if (window.innerWidth <= 700) {
     document.querySelectorAll('.ctrl-label').forEach(function(lbl) {
       lbl.addEventListener('click', function(e) {
         var group = lbl.closest('.ctrl-group');
+        if (group.querySelector('input')) return;
         var hint = group.querySelector('.ctrl-hint');
         if (!hint) return;
+        _hintLastFocused = document.activeElement;
         document.getElementById('hint-sheet-title').textContent = lbl.childNodes[0] ? lbl.childNodes[0].textContent.trim() : lbl.textContent.trim();
         document.getElementById('hint-sheet-body').textContent = hint.textContent;
         document.getElementById('hint-sheet').style.display = 'block';
         document.getElementById('hint-sheet-overlay').style.display = 'block';
+        document.getElementById('hint-sheet-close').focus();
       });
     });
   }

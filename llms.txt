@@ -37,6 +37,30 @@ Permite simular y calcular el coste total de participar en una VPO cooperativa:
    - Descuento anunciado en folleto: "aprox. 85%" (lo fija el Consejo Rector)
 5. La vivienda sigue siendo VPO hasta ~2059 (30 años desde calificación definitiva)
 
+## Parámetros de simulación
+
+La calculadora permite ajustar:
+
+- **Valor piso 2025 (€)**: precio oficial de adjudicación; por defecto 196.760€ (Ático A)
+- **Alquiler mensual base (€)**: cuota inicial según contrato; por defecto 819,84€/mes
+- **IPC anual estimado**: 0%, 2% o 3% — afecta al crecimiento del alquiler y al valor final del piso
+- **Alquiler sube con IPC**: si la cuota mensual se indexa año a año o permanece fija
+- **Años en alquiler antes de comprar**: mínimo 20 (contractual), simulable hasta 30 o sin compra
+- **Descuento en la compra sobre rentas**: entre 50% (mínimo contractual) y 85% (anunciado en folleto)
+- **Comunidad + IBI mensual**: opcional; permite estimar el impacto de 80-130€/mes adicionales
+
+## Outputs de la calculadora
+
+Para cada combinación de parámetros, la herramienta muestra:
+
+- Alquiler mensual el año 1 y el año N (con y sin IPC)
+- Precio neto de compra en el año elegido (bruto menos descuento rentas menos 39k devueltos)
+- Coste total estimado acumulado (todos los desembolsos sumados)
+- Precio VPO regulado proyectado en el año N (valor adjudicación × IPC^años)
+- Desglose completo en tabla: aportaciones, alquiler, IBI, comunidad, compra, gastos compraventa
+- Análisis de riesgos con nivel de impacto por cada incertidumbre
+- Timeline de propiedad con hitos legales
+
 ## Marco legal aplicable
 
 - Decreto 149/2006 — Reglamento de Viviendas Protegidas de Andalucía
@@ -44,6 +68,10 @@ Permite simular y calcular el coste total de participar en una VPO cooperativa:
 - Ley 57/1968 — Garantías en aportaciones a cooperativas de vivienda
 - Calificación VPO: 30 años desde calificación definitiva (libertad total de venta en ~2059)
 - Durante la calificación: precio de venta regulado y derecho de tanteo de la Junta de Andalucía
+
+## Limitaciones y aviso legal
+
+Esta herramienta es un análisis informativo basado en documentación pública disponible. No constituye asesoramiento financiero, fiscal ni jurídico. Los cálculos son proyecciones que dependen de variables futuras inciertas (IPC real, valor catastral, porcentaje de descuento definitivo, normativa VPO vigente en 2049). Consulta siempre con un profesional antes de tomar decisiones de inversión inmobiliaria.
 
 ## Contacto y recursos
 
