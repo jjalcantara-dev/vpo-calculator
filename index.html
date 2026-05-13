@@ -245,7 +245,7 @@
     "dateModified": "2026-05-13",
     "author": { "@type": "Person", "name": "Jesús Jiménez Alcántara", "url": "https://jjalcantara.dev" },
     "about": {
-      "@type": "RealEstateAgent",
+      "@type": "ApartmentComplex",
       "name": "Galivivienda Fortalezas de Vélez",
       "address": { "@type": "PostalAddress", "addressLocality": "Vélez-Málaga", "addressRegion": "Málaga", "addressCountry": "ES", "postalCode": "29700" }
     },
@@ -845,18 +845,32 @@ function render() {
   // Summary callout
   var callout = document.getElementById('summary-callout');
   if (callout) {
-    var parts = [];
-    parts.push('Pagas <strong>' + fmtDec(rentBase) + '/mes</strong> de alquiler el año 1');
+    while (callout.firstChild) { callout.removeChild(callout.firstChild); }
+    var mkStrong = function(txt, color) { var s = document.createElement('strong'); s.textContent = txt; if (color) { s.style.color = color; } return s; };
+    var sep = function() { return document.createTextNode('  ·  '); };
+    callout.appendChild(document.createTextNode('Pagas '));
+    callout.appendChild(mkStrong(fmtDec(rentBase) + '/mes'));
+    callout.appendChild(document.createTextNode(' de alquiler el año 1'));
     if (rentIpc && ipc > 0 && years > 0) {
-      parts.push('que llega a <strong>' + fmtDec(rentLastYear) + '/mes</strong> en el año ' + years);
+      callout.appendChild(sep());
+      callout.appendChild(document.createTextNode('que llega a '));
+      callout.appendChild(mkStrong(fmtDec(rentLastYear) + '/mes'));
+      callout.appendChild(document.createTextNode(' en el año ' + years));
     }
     if (years > 0) {
-      parts.push('en <strong>~' + (2029 + years) + '</strong> ejerces la opción de compra por <strong style="color:var(--ok)">' + fmt(buyNet) + '</strong> netos');
-      parts.push('coste total estimado en ' + years + ' años: <strong style="color:var(--danger)">' + fmt(totalAll) + '</strong>');
+      callout.appendChild(sep());
+      callout.appendChild(document.createTextNode('en '));
+      callout.appendChild(mkStrong('~' + (2029 + years)));
+      callout.appendChild(document.createTextNode(' ejerces la opción de compra por '));
+      callout.appendChild(mkStrong(fmt(buyNet) + ' netos', 'var(--ok)'));
+      callout.appendChild(sep());
+      callout.appendChild(document.createTextNode('coste total estimado en ' + years + ' años: '));
+      callout.appendChild(mkStrong(fmt(totalAll), 'var(--danger)'));
     } else {
-      parts.push('proyección 20 años de referencia sin compra · alquiler acumulado: <strong style="color:var(--danger)">' + fmt(totalRent) + '</strong>');
+      callout.appendChild(sep());
+      callout.appendChild(document.createTextNode('proyección 20 años de referencia sin compra · alquiler acumulado: '));
+      callout.appendChild(mkStrong(fmt(totalRent), 'var(--danger)'));
     }
-    callout.innerHTML = parts.join(' &nbsp;·&nbsp; ');
   }
   document.getElementById('kpi-rent-y1').textContent = 'Año 1: ' + fmtDec(rentBase) + '/mes';
   document.getElementById('kpi-rent-yn').textContent = 'Año ' + (years||20) + ': ' + fmtDec(rentLastYear) + '/mes';
@@ -901,40 +915,51 @@ function render() {
     ]),
   ];
 
-  const isMobile = window.innerWidth <= 700;
-  let tbody = '';
+  var isMobile = window.innerWidth <= 700;
+  var mkEl = function(tag, cls, txt) { var el = document.createElement(tag); if (cls) { el.className = cls; } if (txt !== undefined) { el.textContent = txt; } return el; };
+  var tbodyEl = document.getElementById('payments-tbody');
+  while (tbodyEl.firstChild) { tbodyEl.removeChild(tbodyEl.firstChild); }
   rows.forEach(function(row) {
     var c = row[0], w = row[1], a = row[2], s = row[3];
+    var tr = document.createElement('tr');
     if (isMobile) {
-      var amtDisplay = typeof a === 'number'
-        ? '<span style="font-family:\'DM Mono\',monospace;font-size:14px;font-weight:600;white-space:nowrap;flex-shrink:0;">' + fmt(a) + '</span>'
-        : '<span style="font-family:\'DM Mono\',monospace;font-size:12px;white-space:nowrap;flex-shrink:0;color:var(--muted);">' + a + '</span>';
-      tbody += '<tr><td colspan="5" class="mob-card-cell">'
-        + '<div class="mob-card">'
-        + '<div class="mob-card-top">'
-        + '<div class="mob-card-concept">' + c + '</div>'
-        + amtDisplay
-        + '</div>'
-        + '<div class="mob-card-bottom">'
-        + '<span class="tag tag-' + s + '">' + (stateMap[s] || '?') + '</span>'
-        + '<span class="mob-card-when">' + w + '</span>'
-        + '</div>'
-        + '</div></td></tr>';
+      var td = document.createElement('td'); td.colSpan = 5; td.className = 'mob-card-cell';
+      var card = mkEl('div', 'mob-card');
+      var top = mkEl('div', 'mob-card-top');
+      top.appendChild(mkEl('div', 'mob-card-concept', c));
+      var amt = document.createElement('span');
+      if (typeof a === 'number') { amt.style.cssText = "font-family:'DM Mono',monospace;font-size:14px;font-weight:600;white-space:nowrap;flex-shrink:0;"; amt.textContent = fmt(a); }
+      else { amt.style.cssText = "font-family:'DM Mono',monospace;font-size:12px;white-space:nowrap;flex-shrink:0;color:var(--muted);"; amt.textContent = a; }
+      top.appendChild(amt);
+      var bottom = mkEl('div', 'mob-card-bottom');
+      bottom.appendChild(mkEl('span', 'tag tag-' + s, stateMap[s] || '?'));
+      bottom.appendChild(mkEl('span', 'mob-card-when', w));
+      card.appendChild(top); card.appendChild(bottom); td.appendChild(card); tr.appendChild(td);
     } else {
-      var amtStr = typeof a === 'number' ? '<span class="mono">' + fmt(a) + '</span>' : a;
-      tbody += '<tr><td>' + c + '</td><td style="color:var(--muted);font-size:11px;">' + w + '</td><td style="text-align:right">' + amtStr + '</td><td><span class="tag tag-' + s + '">' + (stateMap[s] || '?') + '</span></td></tr>';
+      var td1 = mkEl('td', '', c);
+      var td2 = mkEl('td', '', w); td2.style.cssText = 'color:var(--muted);font-size:11px;';
+      var td3 = document.createElement('td'); td3.style.textAlign = 'right';
+      if (typeof a === 'number') { td3.appendChild(mkEl('span', 'mono', fmt(a))); } else { td3.textContent = a; }
+      var td4 = mkEl('td'); td4.appendChild(mkEl('span', 'tag tag-' + s, stateMap[s] || '?'));
+      tr.appendChild(td1); tr.appendChild(td2); tr.appendChild(td3); tr.appendChild(td4);
     }
+    tbodyEl.appendChild(tr);
   });
+  var totalTr = document.createElement('tr');
   if (isMobile) {
-    tbody += '<tr><td colspan="5" class="mob-card-cell">'
-      + '<div style="background:var(--bg3);border:1px solid var(--border2);border-radius:6px;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;gap:12px;">'
-      + '<strong style="font-size:12px;">Total estimado</strong>'
-      + '<span style="font-family:\'DM Mono\',monospace;font-size:16px;font-weight:700;color:var(--accent);">' + fmt(totalAll) + '</span>'
-      + '</div></td></tr>';
+    var ttd = document.createElement('td'); ttd.colSpan = 5; ttd.className = 'mob-card-cell';
+    var tdiv = document.createElement('div'); tdiv.style.cssText = 'background:var(--bg3);border:1px solid var(--border2);border-radius:6px;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;gap:12px;';
+    var tlbl = mkEl('strong', '', 'Total estimado'); tlbl.style.fontSize = '12px';
+    var tamt = mkEl('span', '', fmt(totalAll)); tamt.style.cssText = "font-family:'DM Mono',monospace;font-size:16px;font-weight:700;color:var(--accent);";
+    tdiv.appendChild(tlbl); tdiv.appendChild(tamt); ttd.appendChild(tdiv); totalTr.appendChild(ttd);
   } else {
-    tbody += '<tr class="total"><td colspan="2"><strong>TOTAL ESTIMADO COMPLETO</strong></td><td style="text-align:right;color:var(--accent)" class="mono">' + fmt(totalAll) + '</td><td></td></tr>';
+    totalTr.className = 'total';
+    var tc1 = document.createElement('td'); tc1.colSpan = 2; tc1.appendChild(mkEl('strong', '', 'TOTAL ESTIMADO COMPLETO'));
+    var tc2 = mkEl('td', 'mono', fmt(totalAll)); tc2.style.cssText = 'text-align:right;color:var(--accent);';
+    var tc3 = mkEl('td');
+    totalTr.appendChild(tc1); totalTr.appendChild(tc2); totalTr.appendChild(tc3);
   }
-  document.getElementById('payments-tbody').innerHTML = tbody;
+  tbodyEl.appendChild(totalTr);
 
 }
 render();
