@@ -893,7 +893,7 @@ function render() {
       ? [['Comunidad ' + (years || 20) + ' años (' + com + '€/mes)', 'Años 1–' + (years || 20), totalCom, 'warn', 'Confirmado por contrato (cláusula 5ª) · importe exacto pendiente']]
       : [['Comunidad (sin cuantificar, sigue tras la compra)', 'Años 1–' + (years||20) + ' y más allá', 'Sin confirmar', 'danger', '⚠ No se sabe el importe hasta que se constituya la comunidad de propietarios · Estima 80-130€/mes según instalaciones (piscina, ascensor, zonas comunes) · No desaparece al comprar ; se paga de por vida']]),
     ...(years > 0 ? [
-      ['Precio compra año ' + years + ', neto (descuento ' + pct + '% sobre rentas)', 'Año ' + years, Math.round(buyNet), 'info',
+      ['Precio compra año ' + years + ', neto (descuento ' + pct + '% sobre rentas, ya descontadas las 39.000 € de aportaciones cooperativa)', 'Año ' + years, Math.round(buyNet), 'info',
         'Valor adjudicación ' + fmt(adjFinal) + ' – descuento ' + pct + '% rentas (' + fmt(Math.round(totalRent * (pct/100))) + ') = bruto ' + fmt(buyGross) + ' – 39k aportaciones devueltas = neto ' + fmt(buyNet) + ' · El % final lo fija el Consejo Rector'],
       ['Gastos compraventa (notaría, registro, ITP)', 'Año ' + years, '~3–8% del precio de compra', 'warn', 'A cargo del comprador (cláusula 16ª). El importe exacto depende del precio final negociado y los impuestos vigentes en 2049.'],
     ] : [
