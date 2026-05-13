@@ -149,10 +149,17 @@
   .portfolio-link:hover .logo-svg { opacity: 1; }
 
   /* ── Site footer ── */
-  .site-footer { border-top: 1px solid var(--border); background: var(--bg2); padding: 28px 40px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
-  .site-footer-logo { display: inline-flex; align-items: center; gap: 14px; text-decoration: none; }
+  .site-footer { border-top: 1px solid var(--border); background: var(--bg2); padding: 32px 40px; }
+  .site-footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 24px; }
+  .site-footer-logo { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; flex-shrink: 0; }
   .site-footer-logo .logo-svg { opacity: 0.35; transition: opacity 0.2s; }
   .site-footer-logo:hover .logo-svg { opacity: 0.8; }
+  .footer-meta { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); text-align: right; line-height: 1.8; }
+  .footer-meta a { color: var(--muted); text-decoration: underline; text-underline-offset: 2px; }
+  .footer-meta a:hover { color: var(--text); }
+
+  /* ── Bottom sheet (mobile only) ── */
+  #hint-sheet, #hint-sheet-overlay { display: none; }
 
   /* ── Inputs ── */
   input[type="text"], input[type="number"] { background: var(--bg3); border: 1px solid transparent; color: var(--text); padding: 5px 10px; border-radius: var(--r-sm); font-family: 'DM Mono', monospace; font-size: 12px; outline: none; transition: all 0.15s; }
@@ -164,12 +171,18 @@
   @media (max-width: 700px) {
     .hero, .main { padding: 24px 16px; }
     .controls-bar { padding: 10px 16px; position: static; box-shadow: none; border-bottom: 1px solid var(--border); }
-    .cbar-row-top, .cbar-row-bottom { grid-template-columns: 1fr; }
-    .cbar-row-top { border-bottom: none; padding-bottom: 0; }
-    .ctrl-group { border-right: none; padding-right: 0; border-bottom: 1px solid var(--border); padding-bottom: 12px; }
+    .cbar-row-top { grid-template-columns: minmax(0,1fr) minmax(0,1fr); padding-bottom: 10px; }
+    .cbar-row-bottom { grid-template-columns: minmax(0,1fr) minmax(0,1fr); padding-top: 8px; }
+    .ctrl-group { min-width: 0; border-right: none; padding-right: 0; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
+    .cbar-row-top .ctrl-group:nth-child(n+3) { border-bottom: none; padding-bottom: 0; }
+    .cbar-row-top .ctrl-group:nth-child(odd),
+    .cbar-row-bottom .ctrl-group:nth-child(odd):not(:last-child) { border-right: 1px solid var(--border); padding-right: 10px; }
+    .cbar-row-top .ctrl-group:nth-child(even),
+    .cbar-row-bottom .ctrl-group:nth-child(even) { padding-left: 10px; }
     .confirmed-items { grid-template-columns: 1fr; }
-    .site-footer { padding: 20px 16px; flex-direction: column; align-items: flex-start; }
-    .footer-meta { text-align: left !important; border-top: 1px solid var(--border); padding-top: 14px; width: 100%; }
+    .site-footer { padding: 24px 16px; }
+    .site-footer-inner { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .footer-meta { text-align: left; border-top: 1px solid var(--border); padding-top: 14px; width: 100%; }
     .footer-site-title { display: none; }
     .risk-row { grid-template-columns: 1fr; }
     .risk-action { margin-top: 2px; }
@@ -182,8 +195,8 @@
     .ctrl-hint { display: none; }
     .ctrl-label { cursor: pointer; display: flex; align-items: center; gap: 5px; }
     .ctrl-label::after { content: 'ⓘ'; color: var(--muted2); font-weight: 400; text-transform: none; letter-spacing: 0; font-size: 11px; line-height: 1; }
-    .ctrl-group { border-bottom: 1px solid var(--border); padding-bottom: 12px; }
     .ctrl-group:last-child { border-bottom: none; padding-bottom: 0; }
+    .cbar-row-bottom .ctrl-group:last-child { grid-column: 1 / -1; }
     /* Bottom sheet */
     #hint-sheet { display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 600; background: var(--bg); border-top: 1px solid var(--border); border-radius: 16px 16px 0 0; padding: 20px 20px 36px; box-shadow: 0 -8px 32px rgba(0,0,0,0.10); }
     #hint-sheet-title { font-size: 10px; font-weight: 700; color: var(--muted2); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; }
@@ -278,16 +291,21 @@
 </script>
 </head>
 <body>
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <symbol id="icon-ext" viewBox="0 0 9 9">
+    <path d="M1.5 7.5L7.5 1.5M7.5 1.5H3M7.5 1.5V6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+</svg>
 
 <header class="hero">
   <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:14px;">
     <div class="hero-label" style="margin-bottom:0;">EMVIPSA · Galivivienda · Análisis económico · Vivienda Protegida Oficial · Andalucía</div>
-    <a href="https://jjalcantara.dev" class="portfolio-link" target="_blank" rel="noopener noreferrer"><svg class="logo-svg" fill="currentColor" style="height:15px;width:auto;" viewBox="0 0 367 278" xmlns="http://www.w3.org/2000/svg"><path d="m64 34v18l17.3 0.2 17.2 0.3v78 78.1l-2.6 4.9c-5 9.8-15.5 14.8-26.4 12.5-10.5-2.2-18-10.7-19.4-22.2l-0.6-5.3h-17.5-17.5l0.3 6c0.9 16.2 6.2 28.4 17.2 39.6 18.4 18.7 45.6 23.3 69.7 11.7 9.1-4.4 21.5-16.7 26-25.8 7.1-14.3 6.7-7.9 7.1-116.3l0.3-97.7h-35.6-35.5zm27 0v9h-8.5-8.5v-9-9h8.5 8.5z"/><path d="m143.9 16.4c-0.2 0.2-0.3 8.3-0.1 18l0.3 17.6h13.4 13.5l0.1 25.7c0 14.2 0.4 27.8 0.7 30.1l0.7 4.4 7.5-6.5c4.1-3.5 11.4-10.5 16.2-15.5l8.7-9 8.5 10.1c4.7 5.6 10.6 12.4 13 15.1l4.5 4.9 3-6.8c1.9-4.1 3.5-6.5 4-5.9 1.3 1.3 28.9 60.9 29.7 63.9l0.6 2.5h-25.6-25.6v17.5 17.5l34.6 0.2 34.6 0.3 14.1 30.7 14.2 30.8h19.3c10.5 0 19.2-0.4 19.2-0.8 0-0.7-21.1-46.1-40.5-87.2-4.8-10.2-18.1-38.5-29.5-63-31.4-67.1-44.4-94.3-45.3-94.4-0.5 0-7.3 13.3-15 29.7l-14.2 29.7-0.3-30-0.2-30h-31.8c-17.5 0-32.1 0.2-32.3 0.4z"/><path d="m198.1 99.2c-2.1 4.6-10.3 21.8-18.1 38.3-24 50.7-29 61.3-29 61.9 0 0.3 4.6 0.7 10.3 0.8l10.2 0.3-0.3 4.4c-0.4 6.2-4.8 13.9-10 17.6-4.1 2.8-5 3-13.4 3.1h-9l-4.2 8.5c-2.4 4.6-6.2 11.5-8.5 15.3-4.8 7.7-4.8 7.6 3.4 10.2 7.9 2.5 21.9 3 30.9 1 22.2-5 39.2-21.3 45.3-43.7 1.6-5.8 1.8-12 1.8-65.9v-59.5l-2.7-0.3c-2.6-0.3-3 0.3-6.7 8z"/><path d="m216 127.2c0 8 0.4 13.8 0.9 13.2 1.1-1.2 12.1-25.3 12.1-26.5 0-0.5-2.9-0.9-6.5-0.9h-6.5z"/></svg> jjalcantara.dev <span>↗</span></a>
+    <a href="https://jjalcantara.dev" class="portfolio-link" target="_blank" rel="noopener noreferrer"><svg class="logo-svg" fill="currentColor" style="height:15px;width:auto;" viewBox="0 0 367 278" xmlns="http://www.w3.org/2000/svg"><path d="m64 34v18l17.3 0.2 17.2 0.3v78 78.1l-2.6 4.9c-5 9.8-15.5 14.8-26.4 12.5-10.5-2.2-18-10.7-19.4-22.2l-0.6-5.3h-17.5-17.5l0.3 6c0.9 16.2 6.2 28.4 17.2 39.6 18.4 18.7 45.6 23.3 69.7 11.7 9.1-4.4 21.5-16.7 26-25.8 7.1-14.3 6.7-7.9 7.1-116.3l0.3-97.7h-35.6-35.5zm27 0v9h-8.5-8.5v-9-9h8.5 8.5z"/><path d="m143.9 16.4c-0.2 0.2-0.3 8.3-0.1 18l0.3 17.6h13.4 13.5l0.1 25.7c0 14.2 0.4 27.8 0.7 30.1l0.7 4.4 7.5-6.5c4.1-3.5 11.4-10.5 16.2-15.5l8.7-9 8.5 10.1c4.7 5.6 10.6 12.4 13 15.1l4.5 4.9 3-6.8c1.9-4.1 3.5-6.5 4-5.9 1.3 1.3 28.9 60.9 29.7 63.9l0.6 2.5h-25.6-25.6v17.5 17.5l34.6 0.2 34.6 0.3 14.1 30.7 14.2 30.8h19.3c10.5 0 19.2-0.4 19.2-0.8 0-0.7-21.1-46.1-40.5-87.2-4.8-10.2-18.1-38.5-29.5-63-31.4-67.1-44.4-94.3-45.3-94.4-0.5 0-7.3 13.3-15 29.7l-14.2 29.7-0.3-30-0.2-30h-31.8c-17.5 0-32.1 0.2-32.3 0.4z"/><path d="m198.1 99.2c-2.1 4.6-10.3 21.8-18.1 38.3-24 50.7-29 61.3-29 61.9 0 0.3 4.6 0.7 10.3 0.8l10.2 0.3-0.3 4.4c-0.4 6.2-4.8 13.9-10 17.6-4.1 2.8-5 3-13.4 3.1h-9l-4.2 8.5c-2.4 4.6-6.2 11.5-8.5 15.3-4.8 7.7-4.8 7.6 3.4 10.2 7.9 2.5 21.9 3 30.9 1 22.2-5 39.2-21.3 45.3-43.7 1.6-5.8 1.8-12 1.8-65.9v-59.5l-2.7-0.3c-2.6-0.3-3 0.3-6.7 8z"/><path d="m216 127.2c0 8 0.4 13.8 0.9 13.2 1.1-1.2 12.1-25.3 12.1-26.5 0-0.5-2.9-0.9-6.5-0.9h-6.5z"/></svg> jjalcantara.dev <svg width="9" height="9" aria-hidden="true" style="display:inline-block;vertical-align:middle;margin-left:1px;flex-shrink:0;"><use href="#icon-ext"/></svg></a>
   </div>
   <h1>Galivivienda <em>Fortalezas de Vélez</em></h1>
   <p class="hero-sub" style="margin-bottom:20px;">Galivivienda + EMVIPSA · Analiza el coste real de una VPO cooperativa en Vélez-Málaga · 188 viviendas</p>
   <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
-    <a href="https://emvipsa.es/procedimientos-de-adjucacion-de-viviendas-de-proteccion-oficial/" target="_blank" rel="noopener noreferrer" class="badge badge-deadline"><span style="width:6px;height:6px;border-radius:50%;background:currentColor;display:inline-block;flex-shrink:0;"></span>Plazo: 12 mayo – 2 junio · emvipsa.es ↗</a>
+    <a href="https://emvipsa.es/procedimientos-de-adjucacion-de-viviendas-de-proteccion-oficial/" target="_blank" rel="noopener noreferrer" class="badge badge-deadline"><span style="width:6px;height:6px;border-radius:50%;background:currentColor;display:inline-block;flex-shrink:0;"></span>Plazo: 12 mayo – 2 junio · emvipsa.es <svg width="9" height="9" aria-hidden="true" style="display:inline-block;vertical-align:middle;margin-left:1px;flex-shrink:0;"><use href="#icon-ext"/></svg></a>
     <span style="font-size:11px;color:var(--muted2);">Valle-Niza · Real Bajo · Aceituneros · Cerro del Águila</span>
     <span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted2);opacity:0.7;">Actualizado: 13 may 2026</span>
   </div>
@@ -690,7 +708,7 @@
     <div class="footer-note" style="margin-top:8px;">
       <strong>Contacto Galivivienda:</strong> <strong>917 818 664</strong> · <strong>info@galivivienda.com</strong> · <strong>www.galivivienda.com</strong>
       <br style="margin-bottom:6px;">
-      <strong>Plazo solicitudes: 12 mayo – 2 junio</strong> · Descarga formularios y bases reguladoras por parcela en <a href="https://emvipsa.es/procedimientos-de-adjucacion-de-viviendas-de-proteccion-oficial/" target="_blank" rel="noopener noreferrer" style="color:var(--accent);text-decoration:underline;text-underline-offset:3px;">emvipsa.es ↗</a> · También en <strong>cooperopen.org/velez-malaga</strong>
+      <strong>Plazo solicitudes: 12 mayo – 2 junio</strong> · Descarga formularios y bases reguladoras por parcela en <a href="https://emvipsa.es/procedimientos-de-adjucacion-de-viviendas-de-proteccion-oficial/" target="_blank" rel="noopener noreferrer" style="color:var(--accent);text-decoration:underline;text-underline-offset:3px;">emvipsa.es <svg width="9" height="9" aria-hidden="true" style="display:inline-block;vertical-align:middle;margin-left:1px;flex-shrink:0;"><use href="#icon-ext"/></svg></a> · También en <a href="https://cooperopen.org/velez-malaga" target="_blank" rel="noopener noreferrer" style="color:var(--accent);text-decoration:underline;text-underline-offset:3px;">cooperopen.org/velez-malaga <svg width="9" height="9" aria-hidden="true" style="display:inline-block;vertical-align:middle;margin-left:1px;flex-shrink:0;"><use href="#icon-ext"/></svg></a>
     </div>
   </div>
 
@@ -925,18 +943,20 @@ render();
 </main>
 
 <footer class="site-footer">
-  <a href="https://jjalcantara.dev" class="site-footer-logo" target="_blank" rel="noopener noreferrer">
-    <svg class="logo-svg" fill="currentColor" style="height:34px;width:auto;color:var(--text);" viewBox="0 0 367 278" xmlns="http://www.w3.org/2000/svg"><path d="m64 34v18l17.3 0.2 17.2 0.3v78 78.1l-2.6 4.9c-5 9.8-15.5 14.8-26.4 12.5-10.5-2.2-18-10.7-19.4-22.2l-0.6-5.3h-17.5-17.5l0.3 6c0.9 16.2 6.2 28.4 17.2 39.6 18.4 18.7 45.6 23.3 69.7 11.7 9.1-4.4 21.5-16.7 26-25.8 7.1-14.3 6.7-7.9 7.1-116.3l0.3-97.7h-35.6-35.5zm27 0v9h-8.5-8.5v-9-9h8.5 8.5z"/><path d="m143.9 16.4c-0.2 0.2-0.3 8.3-0.1 18l0.3 17.6h13.4 13.5l0.1 25.7c0 14.2 0.4 27.8 0.7 30.1l0.7 4.4 7.5-6.5c4.1-3.5 11.4-10.5 16.2-15.5l8.7-9 8.5 10.1c4.7 5.6 10.6 12.4 13 15.1l4.5 4.9 3-6.8c1.9-4.1 3.5-6.5 4-5.9 1.3 1.3 28.9 60.9 29.7 63.9l0.6 2.5h-25.6-25.6v17.5 17.5l34.6 0.2 34.6 0.3 14.1 30.7 14.2 30.8h19.3c10.5 0 19.2-0.4 19.2-0.8 0-0.7-21.1-46.1-40.5-87.2-4.8-10.2-18.1-38.5-29.5-63-31.4-67.1-44.4-94.3-45.3-94.4-0.5 0-7.3 13.3-15 29.7l-14.2 29.7-0.3-30-0.2-30h-31.8c-17.5 0-32.1 0.2-32.3 0.4z"/><path d="m198.1 99.2c-2.1 4.6-10.3 21.8-18.1 38.3-24 50.7-29 61.3-29 61.9 0 0.3 4.6 0.7 10.3 0.8l10.2 0.3-0.3 4.4c-0.4 6.2-4.8 13.9-10 17.6-4.1 2.8-5 3-13.4 3.1h-9l-4.2 8.5c-2.4 4.6-6.2 11.5-8.5 15.3-4.8 7.7-4.8 7.6 3.4 10.2 7.9 2.5 21.9 3 30.9 1 22.2-5 39.2-21.3 45.3-43.7 1.6-5.8 1.8-12 1.8-65.9v-59.5l-2.7-0.3c-2.6-0.3-3 0.3-6.7 8z"/><path d="m216 127.2c0 8 0.4 13.8 0.9 13.2 1.1-1.2 12.1-25.3 12.1-26.5 0-0.5-2.9-0.9-6.5-0.9h-6.5z"/></svg>
-    <div>
-      <div style="font-family:'Inter',sans-serif;font-size:13px;color:var(--text);font-weight:500;">Jesús Jiménez Alcántara</div>
-      <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);margin-top:3px;letter-spacing:0.05em;">jjalcantara.dev ↗</div>
+  <div class="site-footer-inner">
+    <a href="https://jjalcantara.dev" class="site-footer-logo" target="_blank" rel="noopener noreferrer">
+      <svg class="logo-svg" fill="currentColor" style="height:32px;width:auto;color:var(--text);" viewBox="0 0 367 278" xmlns="http://www.w3.org/2000/svg"><path d="m64 34v18l17.3 0.2 17.2 0.3v78 78.1l-2.6 4.9c-5 9.8-15.5 14.8-26.4 12.5-10.5-2.2-18-10.7-19.4-22.2l-0.6-5.3h-17.5-17.5l0.3 6c0.9 16.2 6.2 28.4 17.2 39.6 18.4 18.7 45.6 23.3 69.7 11.7 9.1-4.4 21.5-16.7 26-25.8 7.1-14.3 6.7-7.9 7.1-116.3l0.3-97.7h-35.6-35.5zm27 0v9h-8.5-8.5v-9-9h8.5 8.5z"/><path d="m143.9 16.4c-0.2 0.2-0.3 8.3-0.1 18l0.3 17.6h13.4 13.5l0.1 25.7c0 14.2 0.4 27.8 0.7 30.1l0.7 4.4 7.5-6.5c4.1-3.5 11.4-10.5 16.2-15.5l8.7-9 8.5 10.1c4.7 5.6 10.6 12.4 13 15.1l4.5 4.9 3-6.8c1.9-4.1 3.5-6.5 4-5.9 1.3 1.3 28.9 60.9 29.7 63.9l0.6 2.5h-25.6-25.6v17.5 17.5l34.6 0.2 34.6 0.3 14.1 30.7 14.2 30.8h19.3c10.5 0 19.2-0.4 19.2-0.8 0-0.7-21.1-46.1-40.5-87.2-4.8-10.2-18.1-38.5-29.5-63-31.4-67.1-44.4-94.3-45.3-94.4-0.5 0-7.3 13.3-15 29.7l-14.2 29.7-0.3-30-0.2-30h-31.8c-17.5 0-32.1 0.2-32.3 0.4z"/><path d="m198.1 99.2c-2.1 4.6-10.3 21.8-18.1 38.3-24 50.7-29 61.3-29 61.9 0 0.3 4.6 0.7 10.3 0.8l10.2 0.3-0.3 4.4c-0.4 6.2-4.8 13.9-10 17.6-4.1 2.8-5 3-13.4 3.1h-9l-4.2 8.5c-2.4 4.6-6.2 11.5-8.5 15.3-4.8 7.7-4.8 7.6 3.4 10.2 7.9 2.5 21.9 3 30.9 1 22.2-5 39.2-21.3 45.3-43.7 1.6-5.8 1.8-12 1.8-65.9v-59.5l-2.7-0.3c-2.6-0.3-3 0.3-6.7 8z"/><path d="m216 127.2c0 8 0.4 13.8 0.9 13.2 1.1-1.2 12.1-25.3 12.1-26.5 0-0.5-2.9-0.9-6.5-0.9h-6.5z"/></svg>
+      <div>
+        <div style="font-family:'Inter',sans-serif;font-size:13px;color:var(--text);font-weight:500;">Jesús Jiménez Alcántara</div>
+        <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);margin-top:2px;letter-spacing:0.05em;">jjalcantara.dev <svg width="9" height="9" aria-hidden="true" style="display:inline-block;vertical-align:middle;margin-left:1px;flex-shrink:0;"><use href="#icon-ext"/></svg></div>
+      </div>
+    </a>
+    <div class="footer-meta">
+      <div class="footer-site-title" style="margin-bottom:2px;">Calculadora VPO · Galivivienda Fortalezas de Vélez · Vélez-Málaga</div>
+      <div>Última actualización: 13 may 2026</div>
+      <div style="opacity:0.55;margin-top:2px;">Análisis basado en documentación pública<br>No constituye asesoramiento financiero ni legal</div>
+      <div style="margin-top:6px;"><a href="/privacy">Política de privacidad</a></div>
     </div>
-  </a>
-  <div class="footer-meta" style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);text-align:right;line-height:2;">
-    <div class="footer-site-title">Calculadora VPO · Galivivienda Fortalezas de Vélez · Vélez-Málaga</div>
-    <div>Última actualización: 13 may 2026</div>
-    <div style="opacity:0.55;">Análisis basado en documentación pública · No constituye asesoramiento financiero ni legal</div>
-    <div style="margin-top:4px;"><a href="/privacy" style="color:var(--muted);text-decoration:underline;text-underline-offset:2px;font-size:10px;opacity:0.7;">Política de privacidad</a></div>
   </div>
 </footer>
 
@@ -944,7 +964,7 @@ render();
   <div style="max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
     <p style="font-size:12px;color:#78716c;line-height:1.6;margin:0;">
       Esta web usa <strong style="color:#111110;">Vercel</strong> (alojamiento) y <strong style="color:#111110;">Google Fonts</strong> (tipografías) ; ambos pueden registrar tu IP. No hay analíticas ni tracking.
-      <a href="/privacy" style="color:#111110;text-underline-offset:2px;">Política de privacidad ↗</a>
+      <a href="/privacy" style="color:#111110;text-underline-offset:2px;">Política de privacidad <svg width="9" height="9" aria-hidden="true" style="display:inline-block;vertical-align:middle;margin-left:1px;flex-shrink:0;"><use href="#icon-ext"/></svg></a>
     </p>
     <button onclick="document.getElementById('cookie-banner').style.display='none';localStorage.setItem('cookie-ok','1');" style="background:#111110;color:#fff;border:none;padding:8px 18px;border-radius:4px;font-size:12px;font-weight:500;cursor:pointer;white-space:nowrap;flex-shrink:0;">Entendido</button>
   </div>
