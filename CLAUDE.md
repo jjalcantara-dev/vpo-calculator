@@ -33,7 +33,6 @@ El archivo `index.html` tiene estas secciones en orden:
 6. **`.main`** — contenido principal:
    - Caja de confirmados por contrato
    - Tabla de pagos detallada
-   - Comparativa de escenarios (4 tarjetas)
    - Riesgos e incertidumbres (id="riesgos")
    - Timeline de propiedad (~2029 → ~2059)
    - Conclusión (pros y contras)
@@ -92,7 +91,6 @@ buyNet = buyGross - 39000   // los 39k de aportaciones se devuelven íntegrament
 - `.btn-opt` — botón de opción (con `.active` para seleccionado)
 - `.tag` + `.tag-ok/warn/danger/info` — etiquetas de estado
 - `.risk-row` — fila de riesgo (grid 3 columnas)
-- `.scenario-card` — tarjeta de escenario comparativo
 - `.summary-box` — caja de conclusión (grid 2 columnas)
 - `.confirmed-box` — caja de datos confirmados por contrato
 

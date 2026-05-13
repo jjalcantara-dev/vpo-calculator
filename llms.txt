@@ -1,4 +1,4 @@
-# Calculadora VPO · Galivivienda Fortalezas de Vélez
+# Calculadora VPO · Galivivienda + EMVIPSA · Fortalezas de Vélez
 
 > Calculadora interactiva para analizar el coste real de una VPO (Vivienda de Protección Oficial) en régimen cooperativo en Vélez-Málaga, Andalucía. Basada en documentación pública de la promoción Galivivienda Fortalezas de Vélez gestionada por EMVIPSA.
 

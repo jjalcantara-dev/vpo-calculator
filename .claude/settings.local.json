@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node --check \"c:\\\\Users\\\\yisus-gamer\\\\Documents\\\\GitHub\\\\vpo-calc\\\\index.html\")",
+      "Bash(node -e ' *)",
+      "Bash(node --check \"c:/Users/yisus-gamer/AppData/Local/Temp/_vpo_check.js\")",
+      "Bash(node -e \"const fs=require\\('fs'\\),html=fs.readFileSync\\('c:/Users/yisus-gamer/Documents/GitHub/vpo-calc/index.html','utf8'\\),scripts=[...html.matchAll\\(/<script\\(?![^>]*type\\)[^>]*>\\([\\\\s\\\\S]*?\\)<\\\\/script>/gi\\)].map\\(m=>m[1]\\).join\\('\\\\n'\\);fs.writeFileSync\\('c:/Users/yisus-gamer/AppData/Local/Temp/_vpo2.js',scripts\\);\")",
+      "Bash(node --check \"c:/Users/yisus-gamer/AppData/Local/Temp/_vpo2.js\")"
+    ]
+  }
+}
