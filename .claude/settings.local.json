@@ -5,7 +5,21 @@
       "Bash(node -e ' *)",
       "Bash(node --check \"c:/Users/yisus-gamer/AppData/Local/Temp/_vpo_check.js\")",
       "Bash(node -e \"const fs=require\\('fs'\\),html=fs.readFileSync\\('c:/Users/yisus-gamer/Documents/GitHub/vpo-calc/index.html','utf8'\\),scripts=[...html.matchAll\\(/<script\\(?![^>]*type\\)[^>]*>\\([\\\\s\\\\S]*?\\)<\\\\/script>/gi\\)].map\\(m=>m[1]\\).join\\('\\\\n'\\);fs.writeFileSync\\('c:/Users/yisus-gamer/AppData/Local/Temp/_vpo2.js',scripts\\);\")",
-      "Bash(node --check \"c:/Users/yisus-gamer/AppData/Local/Temp/_vpo2.js\")"
+      "Bash(node --check \"c:/Users/yisus-gamer/AppData/Local/Temp/_vpo2.js\")",
+      "Bash(node --check /home/jesus/Documentos/Github/vpo-calc/index.html)",
+      "Bash(node --input-type=script)",
+      "Bash(node --check /dev/stdin)",
+      "Bash(sed -n '726,1020p' /home/jesus/Documentos/Github/vpo-calc/index.html)",
+      "Bash(node --check /tmp/vpo_script.js)",
+      "Bash(sed -n '729,1025p' /home/jesus/Documentos/Github/vpo-calc/index.html)",
+      "Bash(node --check /tmp/vpo_main.js)",
+      "Bash(sed -n '1033,1080p' /home/jesus/Documentos/Github/vpo-calc/index.html)",
+      "Bash(node --check /tmp/vpo_hint.js)",
+      "Bash(sed -n '729,989p' /home/jesus/Documentos/Github/vpo-calc/index.html)",
+      "Bash(sed -n '1033,1070p' /home/jesus/Documentos/Github/vpo-calc/index.html)",
+      "Bash(node *)",
+      "Bash(sed -n '730,989p' /home/jesus/Documentos/Github/vpo-calc/index.html)",
+      "Bash(sed -n '1033,1072p' /home/jesus/Documentos/Github/vpo-calc/index.html)"
     ]
   }
 }

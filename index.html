@@ -62,7 +62,7 @@
   .controls-inner { max-width: 1100px; margin: 0 auto; }
   .cbar-row { display: grid; align-items: start; }
   .cbar-row-top { grid-template-columns: repeat(4, 1fr); padding: 4px 0 10px; border-bottom: 1px solid var(--border); }
-  .cbar-row-bottom { grid-template-columns: repeat(3, 1fr); padding: 8px 0 4px; }
+  .cbar-row-bottom { grid-template-columns: repeat(4, 1fr); padding: 8px 0 4px; }
   .ctrl-group { display: flex; flex-direction: column; gap: 4px; padding: 4px 20px 4px 0; border-right: 1px solid var(--border); }
   .ctrl-group:last-child { border-right: none; padding-right: 0; }
   .ctrl-label { font-size: 9px; color: var(--muted2); letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; }
@@ -166,19 +166,21 @@
   input[type="text"]:focus, input[type="number"]:focus { border-color: var(--text); background: var(--bg); box-shadow: 0 0 0 3px rgba(17,17,16,0.06); }
   input[type="number"] { -moz-appearance: textfield; }
   input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; }
+  input[type=range] { -webkit-appearance: none; appearance: none; width: 100%; height: 4px; background: var(--bg3); border-radius: 2px; outline: none; cursor: pointer; border: 1px solid var(--border); margin: 4px 0; }
+  input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 14px; height: 14px; border-radius: 50%; background: var(--accent); cursor: pointer; border: none; }
+  input[type=range]::-moz-range-thumb { width: 14px; height: 14px; border-radius: 50%; background: var(--accent); cursor: pointer; border: none; }
 
   /* ── Mobile ── */
   @media (max-width: 700px) {
     .hero, .main { padding: 24px 16px; }
     .controls-bar { padding: 10px 16px; position: static; box-shadow: none; border-bottom: 1px solid var(--border); }
     .cbar-row-top { grid-template-columns: minmax(0,1fr) minmax(0,1fr); padding-bottom: 10px; }
-    .cbar-row-bottom { grid-template-columns: minmax(0,1fr) minmax(0,1fr); padding-top: 8px; }
+    .cbar-row-bottom { grid-template-columns: 1fr; padding-top: 8px; }
     .ctrl-group { min-width: 0; border-right: none; padding-right: 0; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
+    .ctrl-row { flex-wrap: wrap; }
     .cbar-row-top .ctrl-group:nth-child(n+3) { border-bottom: none; padding-bottom: 0; }
-    .cbar-row-top .ctrl-group:nth-child(odd),
-    .cbar-row-bottom .ctrl-group:nth-child(odd):not(:last-child) { border-right: 1px solid var(--border); padding-right: 10px; }
-    .cbar-row-top .ctrl-group:nth-child(even),
-    .cbar-row-bottom .ctrl-group:nth-child(even) { padding-left: 10px; }
+    .cbar-row-top .ctrl-group:nth-child(odd) { border-right: 1px solid var(--border); padding-right: 10px; }
+    .cbar-row-top .ctrl-group:nth-child(even) { padding-left: 10px; }
     .confirmed-items { grid-template-columns: 1fr; }
     .site-footer { padding: 24px 16px; }
     .site-footer-inner { flex-direction: column; align-items: flex-start; gap: 16px; }
@@ -196,7 +198,7 @@
     .ctrl-label { cursor: pointer; display: flex; align-items: center; gap: 5px; }
     .ctrl-label::after { content: 'ⓘ'; color: var(--muted2); font-weight: 400; text-transform: none; letter-spacing: 0; font-size: 11px; line-height: 1; }
     .ctrl-group:last-child { border-bottom: none; padding-bottom: 0; }
-    .cbar-row-bottom .ctrl-group:last-child { grid-column: 1 / -1; }
+    input[type=range]::-webkit-slider-thumb { width: 22px; height: 22px; }
     /* Bottom sheet */
     #hint-sheet { display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 600; background: var(--bg); border-top: 1px solid var(--border); border-radius: 16px 16px 0 0; padding: 20px 20px 36px; box-shadow: 0 -8px 32px rgba(0,0,0,0.10); }
     #hint-sheet-title { font-size: 10px; font-weight: 700; color: var(--muted2); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; }
@@ -263,12 +265,12 @@
       {
         "@type": "Question",
         "name": "¿Cuánto es el alquiler mensual en Galivivienda Fortalezas de Vélez?",
-        "acceptedAnswer": { "@type": "Answer", "text": "El alquiler base es de 819,84€/mes para el Ático A del Edificio 1 (3 dormitorios, 81,70 m²). A esto se añade comunidad de propietarios (estimada en 80-130€/mes) e IBI (~15€/mes), que corren a cargo del inquilino según la cláusula 5ª del contrato. Si el alquiler se indexa al IPC del 2%, en el año 20 la cuota llegaría a aproximadamente 1.210€/mes." }
+        "acceptedAnswer": { "@type": "Answer", "text": "El alquiler base es de 819,84€/mes para el Ático A del Edificio 1 (3 dormitorios, 81,70 m²). A esto se añade comunidad de propietarios (estimada en 80-130€/mes) e IBI (~43-54€/mes, equivalente a 500-600€/año), que corren a cargo del inquilino según la cláusula 5ª del contrato. Si el alquiler se indexa al IPC del 2%, en el año 20 la cuota llegaría a aproximadamente 1.194€/mes." }
       },
       {
         "@type": "Question",
         "name": "¿Cuánto cuesta comprar el piso en el año 20 en Galivivienda?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Para el ático A (81,70 m², valor de adjudicación 2025: 196.760€), con IPC al 2% y el descuento mínimo garantizado del 50%, el precio neto de compra en el año 20 ronda los 98.000€. El valor de mercado estimado en ese momento sería de ~291.000€. El descuento exacto (entre 50% y el ~85% anunciado en el folleto) lo fija el Consejo Rector." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Para el ático A (81,70 m², valor de adjudicación 2025: 196.760€), con IPC al 2% y el descuento mínimo garantizado del 50%, el precio neto de compra en el año 20 ronda los 157.000€ (el valor VPO de 196.760€ se proyecta 24 años hasta 2049 a un 2% anual, dando ~316.000€; menos el descuento del 50% sobre rentas acumuladas ~121.000€, menos las 39.000€ de aportaciones recuperadas). El descuento exacto (entre 50% y el ~85% anunciado en el folleto) lo fija el Consejo Rector." }
       },
       {
         "@type": "Question",
@@ -319,7 +321,7 @@
     </div>
     <div style="display:flex;gap:10px;align-items:flex-start;">
       <span style="font-size:9px;font-weight:700;letter-spacing:0.1em;color:var(--muted2);text-transform:uppercase;padding:3px 8px;background:var(--bg3);border-radius:4px;white-space:nowrap;flex-shrink:0;margin-top:2px;">Cómo usar</span>
-      <p style="font-size:12px;color:var(--muted);line-height:1.6;margin:0;">Toca los botones de arriba para ajustar la inflación, los años de alquiler y el descuento al comprar. Los totales y la tabla se recalculan al instante. El descuento funciona así: del precio de compra final te restan un % de todo el alquiler que habrás pagado — mínimo el 50% por contrato, aunque el folleto dice ~85%.</p>
+      <p style="font-size:12px;color:var(--muted);line-height:1.6;margin:0;">Arrastra la barra de IPC o toca los botones para ajustar los años de alquiler y el descuento al comprar. Los totales y la tabla se recalculan al instante. El descuento funciona así: del precio de compra final te restan un % de todo el alquiler que habrás pagado — mínimo el 50% por contrato, aunque el folleto dice ~85%.</p>
     </div>
   </div>
 </div>
@@ -344,12 +346,15 @@
       </div>
       <div class="ctrl-group">
         <span class="ctrl-label">IPC anual estimado</span>
-        <div class="ctrl-row">
-          <button class="btn-opt" aria-pressed="false" onclick="setParam('ipc',0,this)">0%</button>
-          <button class="btn-opt active" aria-pressed="true" onclick="setParam('ipc',2,this)">2%</button>
-          <button class="btn-opt" aria-pressed="false" onclick="setParam('ipc',3,this)">3%</button>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <input type="range" id="ipc-slider" min="0" max="6" step="0.1" value="2" style="flex:1;min-width:60px;" oninput="setIpc(this.value)">
+          <span id="ipc-val" style="font-family:'DM Mono',monospace;font-size:12px;font-weight:600;color:var(--text);min-width:32px;text-align:right;">2%</span>
         </div>
-        <span class="ctrl-hint">La inflación que prevés. Con 2%, el alquiler y el valor del piso crecen un poco cada año.</span>
+        <div style="display:flex;justify-content:space-between;margin-top:4px;">
+          <button onclick="stepIpc(-1)" aria-label="Bajar IPC 0,1%" style="width:28px;height:20px;border:1px solid var(--border2);border-radius:4px;background:var(--bg3);color:var(--muted);font-size:13px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;">‹</button>
+          <button onclick="stepIpc(1)" aria-label="Subir IPC 0,1%" style="width:28px;height:20px;border:1px solid var(--border2);border-radius:4px;background:var(--bg3);color:var(--muted);font-size:13px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;">›</button>
+        </div>
+        <span class="ctrl-hint">La inflación que prevés. Arrastra para cambiarla. Con 2%, el alquiler y el valor del piso crecen un poco cada año.</span>
       </div>
       <div class="ctrl-group">
         <span class="ctrl-label">Alquiler sube con IPC</span>
@@ -381,13 +386,22 @@
         <span class="ctrl-hint">Al comprar, descuentan parte del alquiler que ya pagaste. El contrato garantiza mínimo el 50%; la cooperativa anuncia ~85%.</span>
       </div>
       <div class="ctrl-group">
-        <span class="ctrl-label">Comunidad + IBI mensual</span>
+        <span class="ctrl-label">Comunidad mensual</span>
         <div class="ctrl-row">
           <button class="btn-opt active" aria-pressed="true" onclick="setParam('com',0,this)">Sin estimar</button>
           <button class="btn-opt" aria-pressed="false" onclick="setParam('com',90,this)">90 €/mes</button>
           <button class="btn-opt" aria-pressed="false" onclick="setParam('com',130,this)">130 €/mes</button>
         </div>
-        <span class="ctrl-hint">Gastos que pagas tú además del alquiler: cuota de la comunidad de vecinos e IBI (impuesto municipal del piso).</span>
+        <span class="ctrl-hint">Cuota de la comunidad de vecinos (ascensor, zonas comunes…). No está cuantificada hasta que se constituya la comunidad.</span>
+      </div>
+      <div class="ctrl-group">
+        <span class="ctrl-label">IBI anual</span>
+        <div class="ctrl-row">
+          <button class="btn-opt active" aria-pressed="true" onclick="setParam('ibi',0,this)">Sin estimar</button>
+          <button class="btn-opt" aria-pressed="false" onclick="setParam('ibi',500,this)">500 €/año</button>
+          <button class="btn-opt" aria-pressed="false" onclick="setParam('ibi',600,this)">600 €/año</button>
+        </div>
+        <span class="ctrl-hint">Impuesto municipal. Vélez-Málaga aplica ~0,65% sobre valor catastral. Bonificación 50% VPO solo los 3 primeros años.</span>
       </div>
     </div>
   </div>
@@ -413,7 +427,7 @@
       <div class="kpi" style="padding:14px;">
         <div class="kpi-label">Total desembolsado</div>
         <div class="kpi-value danger" id="kpi-total"></div>
-        <div class="kpi-sub">Aportaciones + alquiler + comunidad + compra</div>
+        <div class="kpi-sub">Aportaciones + alquiler + comunidad + IBI + compra</div>
       </div>
       <div class="kpi" style="padding:14px;">
         <div class="kpi-label" id="kpi-adj-label">Valor piso año 20</div>
@@ -431,6 +445,7 @@
       <div style="display:flex;flex-wrap:wrap;gap:6px 14px;margin-left:auto;">
         <span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);">Alquiler total: <strong id="brk-rent" style="color:var(--text);"></strong></span>
         <span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);" id="brk-com-wrap">Comunidad: <strong id="brk-com" style="color:var(--text);"></strong></span>
+        <span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);" id="brk-ibi-wrap">IBI: <strong id="brk-ibi" style="color:var(--text);"></strong></span>
         <span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);">Aportaciones: <strong style="color:var(--text);">39.000€</strong> <span style="color:var(--ok);font-weight:600;">(se recuperan)</span></span>
         <span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);" id="brk-buy-wrap">Precio compra: <strong id="brk-buy" style="color:var(--text);"></strong></span>
       </div>
@@ -715,7 +730,21 @@
 </div>
 
 <script>
-const params = { ipc: 2, pct: 50, com: 0, rentIpc: true, years: 20 };
+const params = { ipc: 2, pct: 50, com: 0, ibi: 0, rentIpc: true, years: 20 };
+
+function setIpc(v) {
+  params.ipc = parseFloat(v);
+  var n = parseFloat(v);
+  document.getElementById('ipc-val').textContent = (n % 1 === 0 ? n.toString() : n.toFixed(1).replace('.', ',')) + '%';
+  render();
+}
+
+function stepIpc(dir) {
+  var next = Math.round((params.ipc + dir * 0.1) * 10) / 10;
+  next = Math.max(0, Math.min(6, next));
+  document.getElementById('ipc-slider').value = next;
+  setIpc(next);
+}
 
 function setParam(k, v, el) {
   params[k] = v;
@@ -751,7 +780,7 @@ function calcBuy(ipc, pct, rentIpc, years) {
   const { adjBase, rentBase } = getInputs();
   const refYears = years > 0 ? years : 20;
   const months = refYears * 12;
-  const adjFinal = adjBase * Math.pow(1 + ipc / 100, refYears);
+  const adjFinal = adjBase * Math.pow(1 + ipc / 100, refYears + 4); // 4 años de IPC desde valor base 2025 hasta llaves ~2029
   let totalRent = 0;
   for (let m = 0; m < months; m++) {
     totalRent += rentIpc ? rentBase * Math.pow(1 + ipc / 100, m / 12) : rentBase;
@@ -759,7 +788,7 @@ function calcBuy(ipc, pct, rentIpc, years) {
   const discount = totalRent * (pct / 100);
   const buyGross = years > 0 ? Math.max(0, adjFinal - discount) : 0;
   const buyNet = years > 0 ? Math.max(0, buyGross - 39000) : 0;
-  const rentLastYear = rentIpc ? rentBase * Math.pow(1 + ipc / 100, refYears) : rentBase;
+  const rentLastYear = rentIpc ? rentBase * Math.pow(1 + ipc / 100, refYears - 1) : rentBase;
   return { adjFinal, totalRent, buyGross, buyNet, rentBase, rentLastYear };
 }
 
@@ -829,11 +858,13 @@ function drawRentChart() {
 }
 
 function render() {
-  const { ipc, pct, com, rentIpc, years } = params;
+  const { ipc, pct, com, ibi, rentIpc, years } = params;
   const { adjBase, rentBase } = getInputs();
   const { adjFinal, totalRent, buyGross, buyNet, rentLastYear } = calcBuy(ipc, pct, rentIpc, years);
-  const totalCom = com * (years > 0 ? years : 20) * 12;
-  const totalAll = 39000 + totalRent + totalCom + buyNet;
+  const refYears = years > 0 ? years : 20;
+  const totalCom = com * refYears * 12;
+  const totalIbi = ibi * refYears;
+  const totalAll = 39000 + totalRent + totalCom + totalIbi + buyNet;
 
   const yearsLabel = years > 0 ? years + ' años' : 'indefinido (sin compra)';
   const rentInfo = rentIpc && ipc > 0
@@ -841,7 +872,7 @@ function render() {
     : 'Alquiler fijo: ' + fmtDec(rentBase) + '/mes durante ' + yearsLabel;
 
   document.getElementById('kpi-label').textContent =
-    years + ' años alquiler · IPC ' + ipc + '% · Descuento en la compra ' + pct + '% · Alquiler ' + (rentIpc ? 'sube con IPC' : 'fijo') + ' · Comunidad ' + (com === 0 ? 'no estimada' : com + '€/mes');
+    years + ' años alquiler · IPC ' + ipc + '% · Descuento en la compra ' + pct + '% · Alquiler ' + (rentIpc ? 'sube con IPC' : 'fijo') + ' · Comunidad ' + (com === 0 ? 'no estimada' : com + '€/mes') + ' · IBI ' + (ibi === 0 ? 'no estimado' : ibi + '€/año');
   // Summary callout
   var callout = document.getElementById('summary-callout');
   if (callout) {
@@ -882,14 +913,18 @@ function render() {
   document.getElementById('kpi-adj-label').textContent = 'Precio VPO regulado en el año ' + (years || 20);
   document.getElementById('kpi-adj').textContent = fmt(adjFinal);
   document.getElementById('kpi-adj-sub').textContent = ipc > 0
-    ? fmt(adjBase) + ' base · +' + ipc + '% IPC/año · no es precio libre de mercado'
-    : fmt(adjBase) + ' base · IPC 0%, sin variación';
+    ? fmt(adjBase) + ' (2025) · +' + ipc + '% × ' + (refYears + 4) + ' años (llaves 2029 → compra ' + (2029 + refYears) + ')'
+    : fmt(adjBase) + ' (2025) · IPC 0%, sin variación · precio VPO regulado';
   // Desglose
   document.getElementById('brk-rent').textContent = fmt(totalRent);
   const brkCom = document.getElementById('brk-com');
   const brkComWrap = document.getElementById('brk-com-wrap');
   if (com > 0) { brkCom.textContent = fmt(totalCom); brkComWrap.style.display = ''; }
   else { brkComWrap.style.display = 'none'; }
+  const brkIbi = document.getElementById('brk-ibi');
+  const brkIbiWrap = document.getElementById('brk-ibi-wrap');
+  if (ibi > 0) { brkIbi.textContent = fmt(totalIbi); brkIbiWrap.style.display = ''; }
+  else { brkIbiWrap.style.display = 'none'; }
   const brkBuyWrap = document.getElementById('brk-buy-wrap');
   const brkBuy = document.getElementById('brk-buy');
   if (years > 0) { brkBuy.textContent = fmt(buyNet); brkBuyWrap.style.display = ''; }
@@ -902,7 +937,7 @@ function render() {
     ['Aportación entrada cooperativa', 'Día 1 (tras sorteo)', 25000, 'ok', 'Contrato participación social, cláusula 4ª'],
     ['Aportación durante obra y llaves · 208,33€/mes × 24 meses = 5.000€ + 9.000€ al recoger las llaves', 'Durante 24 meses de obra + llaves', 14000, 'ok', 'Contrato participación social, cláusula 4ª · 208,33€/mes durante 24 meses desde licencia de obras y calificación provisional (5.000€) + 9.000€ en entrega de la vivienda e inicio del periodo de alquiler · Total: 14.000€'],
     [rentLabel, 'Años 1–' + (years || 20), Math.round(totalRent), 'info', rentInfo],
-    ['IBI (impuesto municipal del piso)', 'Todos los años', '~500–600€/año', 'warn', 'Vélez-Málaga aplica un tipo del 0,65% sobre el valor catastral. Para un piso VPO de 81 m² el valor catastral estimado ronda 80.000–100.000€, lo que da unos 520–650€/año (~43–54€/mes). Hay bonificación del 50% para VPO, pero solo durante los 3 primeros años desde la calificación definitiva. Lo paga el inquilino (cláusula 5ª) y sigue pagándose tras la compra.'],
+    ['IBI (impuesto municipal del piso)', 'Todos los años', ibi > 0 ? Math.round(totalIbi) : '~500–600€/año', ibi > 0 ? 'warn' : 'warn', 'Vélez-Málaga aplica un tipo del 0,65% sobre el valor catastral. Para un piso VPO de 81 m² el valor catastral estimado ronda 80.000–100.000€, lo que da unos 520–650€/año (~43–54€/mes). Hay bonificación del 50% para VPO, pero solo durante los 3 primeros años desde la calificación definitiva. Lo paga el inquilino (cláusula 5ª) y sigue pagándose tras la compra.'],
     ...(com > 0
       ? [['Comunidad ' + (years || 20) + ' años (' + com + '€/mes)', 'Años 1–' + (years || 20), totalCom, 'warn', 'Confirmado por contrato (cláusula 5ª) · importe exacto pendiente']]
       : [['Comunidad (sin cuantificar, sigue tras la compra)', 'Años 1–' + (years||20) + ' y más allá', 'Sin confirmar', 'danger', '⚠ No se sabe el importe hasta que se constituya la comunidad de propietarios · Estima 80-130€/mes según instalaciones (piscina, ascensor, zonas comunes) · No desaparece al comprar ; se paga de por vida']]),
@@ -1032,10 +1067,11 @@ render();
     document.querySelectorAll('.ctrl-label').forEach(function(lbl) {
       lbl.addEventListener('click', function(e) {
         var group = lbl.closest('.ctrl-group');
-        if (group.querySelector('input')) return;
         var hint = group.querySelector('.ctrl-hint');
         if (!hint) return;
-        _hintLastFocused = document.activeElement;
+        e.preventDefault();
+        var forId = lbl.getAttribute ? lbl.getAttribute('for') : null;
+        _hintLastFocused = forId ? document.getElementById(forId) : document.activeElement;
         document.getElementById('hint-sheet-title').textContent = lbl.childNodes[0] ? lbl.childNodes[0].textContent.trim() : lbl.textContent.trim();
         document.getElementById('hint-sheet-body').textContent = hint.textContent;
         document.getElementById('hint-sheet').style.display = 'block';
