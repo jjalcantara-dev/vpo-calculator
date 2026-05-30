@@ -1,19 +1,25 @@
-# VPO Calculator — Galivivienda Fortalezas de Vélez
+# VPO Calculator
 
-Calculadora interactiva para analizar el coste real de una Vivienda de Protección Oficial (VPO) en régimen cooperativo en Andalucía.
+Interactive calculator that estimates the real acquisition cost of Andalusian cooperative protected housing (VPO).
 
-## Stack
+## Features
 
-- HTML estático puro — sin dependencias, sin build
-- Google Fonts (DM Serif Display, DM Mono, Outfit)
-- JavaScript vanilla
+- Housing price calculation
+- Cooperative contribution estimation
+- Additional fees breakdown
+- Mobile responsive design
+- SEO optimized
 
-## Deploy
+## Tech Stack
 
-```bash
-vercel
-```
+- HTML5
+- Vanilla JavaScript
+- CSS3
 
-## Subdominio
+## Live Demo
 
-`vpo.jjalcantara.dev`
+https://vpo.jjalcantara.dev
+
+## Screenshots
+
+<img width="1808" height="1062" alt="imagen" src="https://github.com/user-attachments/assets/78ed9af7-0ed5-4969-9555-7430f64c4328" />
